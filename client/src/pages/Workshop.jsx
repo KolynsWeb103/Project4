@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import WeaponsAPI from '../services/WeaponsAPI'
+import RarityIcon from '../components/RarityIcon'
 
 import weaponIcon from '../assets/icons/great-sword.png'
 import helmetIcon from '../assets/icons/helmet.png'
@@ -70,6 +71,19 @@ const Workshop = () => {
     "heavy-bowgun": heavyBowgunIcon
   }
 
+  const rarityColorsMap = {
+    1: '#FFFFFF',
+    2: '#FFFFFF',
+    3: '#FFFFFF',
+    4: '#52F152',
+    5: '#FD9DC8',
+    6: '#83C3FC',
+    7: '#FF9661',
+    8: '#FD6960',
+    9: '#FFC762',
+    10: '#BB84FB'
+  }
+
   return (
     <main className="workshop-page">
       <section className="gear-slot-buttons">
@@ -77,11 +91,17 @@ const Workshop = () => {
           className="gear-slot-button"
           onClick={() => handleGearSlotClick('weapon')}
         >
-          <img
-            src={selectedWeapon ? weaponIconsMap[selectedWeapon.type] || weaponIcon : weaponIcon}
-            alt=""
-            className="gear-icon"
-          />
+          {selectedWeapon ? (
+            <RarityIcon
+              src={weaponIconsMap[selectedWeapon.type] || weaponIcon}
+              color={rarityColorsMap[selectedWeapon.rare] || '#FFFFFF'}
+              size={52}
+              className="gear-icon"
+            />
+          ) : (
+            <img src={weaponIcon} alt="" className="gear-icon" />
+          )}
+
           <span>{selectedWeapon ? selectedWeapon.name : 'Weapon'}</span>
         </button>
 
@@ -236,9 +256,10 @@ const Workshop = () => {
                   setSelectedWeaponType(null)
                 }}
               >
-                <img
+                <RarityIcon
                   src={weaponIconsMap[weapon.type] || weaponIcon}
-                  alt=""
+                  color={rarityColorsMap[weapon.rare] || '#FFFFFF'}
+                  size={52}
                   className="weapon-list-icon"
                 />
                 <span>{weapon.name}</span>
