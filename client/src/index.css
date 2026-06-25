@@ -1,68 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800;900&display=swap');
 
-#root {
-    --font-family: Rubik, Verdana, sans-serif;
-    --primary: rgb(115, 2, 12);
-    --primary-hover: black;
-    --color: white;
-    --h1-color: var(--color);
-    --h2-color: var(--color);
-    --h3-color: var(--color);
-    --card-background-color: rgba(0, 0, 0, 0.8);
-    --card-sectionning-background-color: rgba(0, 0, 0, 0.8);
-    --form-element-active-border-color: var(--color);
-    --form-element-placeholder-color: gray;
+html,
+body {
+    min-height: 100%;
+    margin: 0;
 }
 
-#root h1 {
-    font-size: 3rem;
+body {
+    background: url('./assets/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-color: rgb(0, 40, 95);
+}
+
+#root {
+    font-family: Nunito Sans, Verdana, sans-serif;
+    min-height: 100vh;
+
+    --main-color: rgba(0, 0, 0, 0.75);
+    --secondary-color: rgb(0, 40, 95);
+    --primary: var(--main-color);
+    --primary-hover: rgb(0, 40, 95);
+    --primary-focus: rgb(0, 0, 0, 0.75);
+    --secondary: var(--secondary-color);
+    --secondary-hover: rgb(4, 66, 191);
+    --secondary-focus: rgb(0, 0, 0);
+    --h1-color: white;
+    --h2-color: white;
+    --h3-color: white;
+    --card-background-color: none;
+    --form-element-background-color: white;
+    --form-element-border-color: var(--main-color);
+    --form-element-color: black;
+    --form-element-placeholder-color: black;
+    --form-element-active-border-color: var(--secondary-color);
+    --form-element-active-background-color: white;
+}
+
+#root h1, #root h2, #root h3 {
+    text-transform: uppercase;
     margin-bottom: 0px;
 }
 
 #root h2 {
-    margin-bottom: 0px;
+    font-family: Nunito Sans, Verdana, sans-serif;
+    font-size: 2em;
+    font-weight: 800;
 }
 
 #root h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0px;
-}
-
-#root p {
-    margin-bottom: 10px;
-}
-
-#root [role=button], #root button, #root input[type=submit] {
-    font-family: var(--font-family);
-    font-weight: 500;
-    text-transform: uppercase;
-    border: 2px solid transparent;
-    margin: 10px;
-    width: max-content;
-}
-
-#root [role=button]:hover, #root button:hover, #root input[type=submit]:hover {
-    border: 2px solid var(--color);
+    font-family: Nunito Sans, Verdana, sans-serif;
+    font-size: 1.3em;
+    font-weight: 800;
 }
 
 #root main {
     display: flex;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    justify-content: center;
+}
+
+#root [role=button] {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 1.5em;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #root article {
-    text-align: left;
-    margin-bottom: 5px;
+    padding: 0px;
 }
 
-#root article header {
-    border-bottom: 0px;
-    margin-bottom: 10px;
+#root select {
+    width: 400px;
 }
 
-#root article footer {
-    border-top: 0px;
-    margin-top: 0px;
-    display: flex;
+#root h1 {
+  font-family: Papyrus, cursive;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 3px 3px 4px black;
 }
