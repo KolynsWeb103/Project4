@@ -17,10 +17,10 @@ const app = express()
 
 app.use(express.json())
 
-app.use('/armors', armorsRouter)
-app.use('/decorations', decorationsRouter)
-app.use('/skills', skillsRouter)
-app.use('/weapons', weaponsRouter)
+app.use('/api/armors', armorsRouter)
+app.use('/api/decorations', decorationsRouter)
+app.use('/api/skills', skillsRouter)
+app.use('/api/weapons', weaponsRouter)
 
 if (process.env.NODE_ENV === 'development') {
     app.use(favicon(path.resolve('../', 'client', 'public', 'lightning.png')))
