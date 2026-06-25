@@ -28,6 +28,7 @@ const Workshop = () => {
   const [selectedGearSlot, setSelectedGearSlot] = useState(null)
   const [selectedWeaponType, setSelectedWeaponType] = useState(null)
   const [hoveredGear, setHoveredGear] = useState(null)
+  const [showSkillPanel, setShowSkillPanel] = useState(false)
 
   const [selectedGear, setSelectedGear] = useState({
     weapon: null,
@@ -235,6 +236,7 @@ const Workshop = () => {
     setSelectedGearSlot(gearSlotId)
     setSelectedWeaponType(null)
     setHoveredGear(null)
+    setShowSkillPanel(false)
   }
 
   const handleWeaponTypeClick = (weaponTypeId) => {
@@ -254,7 +256,7 @@ const Workshop = () => {
   }
 
   const filteredGear = (() => {
-    if (selectedGearSlot === 'weapon') {
+    if (!showSkillPanel && selectedGearSlot === 'weapon') {
       return weapons.filter(weapon => weapon.type === selectedWeaponType)
     }
 
@@ -266,8 +268,30 @@ const Workshop = () => {
   })()
 
   const shouldShowGearList =
+    !showSkillPanel &&
     selectedGearSlot &&
     (selectedGearSlot !== 'weapon' || selectedWeaponType)
+
+  const getSkillPointTotals = () => {
+    const totals = {}
+
+    Object.values(selectedGear).forEach((gear) => {
+      if (!gear) return
+
+      const skillPoints = gear.skill_points || gear['skill-points'] || []
+
+      skillPoints.forEach((skill) => {
+        totals[skill.name] = (totals[skill.name] || 0) + Number(skill.points)
+      })
+    })
+
+    return Object.entries(totals)
+      .map(([name, points]) => ({
+        name,
+        points
+      }))
+      .sort((a, b) => b.points - a.points)
+  }
 
   return (
     <main className="workshop-page">
@@ -298,7 +322,43 @@ const Workshop = () => {
         })}
       </section>
 
-      {selectedGearSlot === 'weapon' && (
+      <section className="gear-summary-buttons">
+        <button
+          className="gear-summary-button"
+          onClick={() => {
+            setShowSkillPanel(true)
+            setSelectedGearSlot(null)
+            setSelectedWeaponType(null)
+            setHoveredGear(null)
+          }}
+        >
+          View Skill Points
+        </button>
+      </section>
+
+      {showSkillPanel && (
+        <section className="skill-summary-panel">
+          <h2>Skill Point Summary</h2>
+
+          {getSkillPointTotals().length > 0 ? (
+            <div className="skill-summary-list">
+              {getSkillPointTotals().map((skill) => (
+                <div
+                  key={skill.name}
+                  className="skill-summary-row"
+                >
+                  <span>{skill.name}</span>
+                  <strong>{skill.points > 0 ? `+${skill.points}` : skill.points}</strong>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No skill points from selected gear yet.</p>
+          )}
+        </section>
+      )}
+
+      {!showSkillPanel && selectedGearSlot === 'weapon' && (
         <section className="weapon-type-panel">
           <h2>Choose Weapon Type</h2>
 
