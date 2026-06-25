@@ -8,7 +8,7 @@ const Navigation = () => {
         <ul>
         <li>
             <h1>MHFU Gear Workshop 🛡️</h1>
-            <p className="nav-subtitle">Only armors & weapons above rarity 7</p>
+            <p className="nav-subtitle">Source: https://github.com/Kolyn090/mhfu-db</p>
         </li>
         </ul>
 

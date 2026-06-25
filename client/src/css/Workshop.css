@@ -190,3 +190,9 @@
   text-align: center;
   margin-top: 5rem;
 }
+
+.subtitle {
+  font-size: 0.95rem;
+  margin: 0;
+  color: #ccc;
+}

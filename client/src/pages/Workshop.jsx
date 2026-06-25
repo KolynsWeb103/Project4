@@ -249,6 +249,7 @@ const Workshop = () => {
     }))
 
     setSelectedWeaponType(null)
+    setSelectedGearSlot(null)
     setHoveredGear(null)
   }
 
@@ -324,6 +325,7 @@ const Workshop = () => {
       {shouldShowGearList && (
         <section className="weapon-list-panel">
           <h2>Choose {getGearSlotLabel(selectedGearSlot)}</h2>
+          <p className="subtitle">Only rarity 7 & above available due to resource limitation</p>
 
           <div className="weapon-list-layout">
             <div className="weapon-list-buttons">
