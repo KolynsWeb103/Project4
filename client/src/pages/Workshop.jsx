@@ -28,7 +28,6 @@ const Workshop = () => {
   const [selectedGearSlot, setSelectedGearSlot] = useState(null)
   const [selectedWeaponType, setSelectedWeaponType] = useState(null)
   const [hoveredGear, setHoveredGear] = useState(null)
-  const [showSkillPanel, setShowSkillPanel] = useState(false)
 
   const [selectedGear, setSelectedGear] = useState({
     weapon: null,
@@ -236,7 +235,6 @@ const Workshop = () => {
     setSelectedGearSlot(gearSlotId)
     setSelectedWeaponType(null)
     setHoveredGear(null)
-    setShowSkillPanel(false)
   }
 
   const handleWeaponTypeClick = (weaponTypeId) => {
@@ -256,7 +254,7 @@ const Workshop = () => {
   }
 
   const filteredGear = (() => {
-    if (!showSkillPanel && selectedGearSlot === 'weapon') {
+    if (selectedGearSlot === 'weapon') {
       return weapons.filter(weapon => weapon.type === selectedWeaponType)
     }
 
@@ -268,7 +266,6 @@ const Workshop = () => {
   })()
 
   const shouldShowGearList =
-    !showSkillPanel &&
     selectedGearSlot &&
     (selectedGearSlot !== 'weapon' || selectedWeaponType)
 
@@ -295,70 +292,38 @@ const Workshop = () => {
 
   return (
     <main className="workshop-page">
-      <section className="gear-slot-buttons">
-        {gearSlots.map((gearSlot) => {
-          const selectedItem = getSelectedGearForSlot(gearSlot.id)
+      <section className="workshop-top-layout">
+        <section className="gear-slot-buttons">
+          {gearSlots.map((gearSlot) => {
+            const selectedItem = getSelectedGearForSlot(gearSlot.id)
 
-          return (
-            <button
-              key={gearSlot.id}
-              className="gear-slot-button"
-              onClick={() => handleGearSlotClick(gearSlot.id)}
-            >
-              {selectedItem ? (
-                <RarityIcon
-                  src={getGearIcon(selectedItem, gearSlot.id)}
-                  color={rarityColorsMap[selectedItem.rare] || '#FFFFFF'}
-                  size={52}
-                  className="gear-icon"
-                />
-              ) : (
-                <img src={gearSlot.icon} alt="" className="gear-icon" />
-              )}
+            return (
+              <button
+                key={gearSlot.id}
+                className="gear-slot-button"
+                onClick={() => handleGearSlotClick(gearSlot.id)}
+              >
+                {selectedItem ? (
+                  <RarityIcon
+                    src={getGearIcon(selectedItem, gearSlot.id)}
+                    color={rarityColorsMap[selectedItem.rare] || '#FFFFFF'}
+                    size={52}
+                    className="gear-icon"
+                  />
+                ) : (
+                  <img src={gearSlot.icon} alt="" className="gear-icon" />
+                )}
 
-              <span>{selectedItem ? selectedItem.name : gearSlot.label}</span>
-            </button>
-          )
-        })}
-      </section>
-
-      <section className="gear-summary-buttons">
-        <button
-          className="gear-summary-button"
-          onClick={() => {
-            setShowSkillPanel(true)
-            setSelectedGearSlot(null)
-            setSelectedWeaponType(null)
-            setHoveredGear(null)
-          }}
-        >
-          View Skill Points
-        </button>
-      </section>
-
-      {showSkillPanel && (
-        <section className="skill-summary-panel">
-          <h2>Skill Point Summary</h2>
-
-          {getSkillPointTotals().length > 0 ? (
-            <div className="skill-summary-list">
-              {getSkillPointTotals().map((skill) => (
-                <div
-                  key={skill.name}
-                  className="skill-summary-row"
-                >
-                  <span>{skill.name}</span>
-                  <strong>{skill.points > 0 ? `+${skill.points}` : skill.points}</strong>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>No skill points from selected gear yet.</p>
-          )}
+                <span>{selectedItem ? selectedItem.name : gearSlot.label}</span>
+              </button>
+            )
+          })}
         </section>
-      )}
 
-      {!showSkillPanel && selectedGearSlot === 'weapon' && (
+        <SkillSummaryPanel skills={getSkillPointTotals()} />
+      </section>
+
+      {selectedGearSlot === 'weapon' && (
         <section className="weapon-type-panel">
           <h2>Choose Weapon Type</h2>
 
@@ -385,7 +350,9 @@ const Workshop = () => {
       {shouldShowGearList && (
         <section className="weapon-list-panel">
           <h2>Choose {getGearSlotLabel(selectedGearSlot)}</h2>
-          <p className="subtitle">Only rarity 7 & above available due to resource limitation</p>
+          <p className="subtitle">
+            Only rarity 7 & above available due to resource limitation
+          </p>
 
           <div className="weapon-list-layout">
             <div className="weapon-list-buttons">
@@ -424,6 +391,35 @@ const Workshop = () => {
         </section>
       )}
     </main>
+  )
+}
+
+const SkillSummaryPanel = ({ skills }) => {
+  return (
+    <aside className="skill-summary-panel">
+      <h2>Skill Points</h2>
+
+      {skills.length > 0 ? (
+        <div className="skill-summary-list">
+          {skills.map((skill) => (
+            <div
+              key={skill.name}
+              className="skill-summary-row"
+            >
+              <span>{skill.name}</span>
+
+              <strong>
+                {skill.points > 0 ? `+${skill.points}` : skill.points}
+              </strong>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="skill-summary-empty">
+          No skill points yet.
+        </p>
+      )}
+    </aside>
   )
 }
 
