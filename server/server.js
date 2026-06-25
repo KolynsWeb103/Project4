@@ -4,7 +4,10 @@ import favicon from 'serve-favicon'
 import dotenv from 'dotenv'
 
 // import the router from your routes file
-
+import armorsRouter from './routes/armors.js'
+import decorationsRouter from './routes/decorations.js'
+import skillsRouter from './routes/skills.js'
+import weaponsRouter from './routes/weapons.js'
 
 dotenv.config()
 
@@ -13,6 +16,11 @@ const PORT = process.env.PORT || 3000
 const app = express()
 
 app.use(express.json())
+
+app.use('/armors', armorsRouter)
+app.use('/decorations', decorationsRouter)
+app.use('/skills', skillsRouter)
+app.use('/weapons', weaponsRouter)
 
 if (process.env.NODE_ENV === 'development') {
     app.use(favicon(path.resolve('../', 'client', 'public', 'lightning.png')))
