@@ -27,6 +27,7 @@ const Workshop = () => {
   const [selectedGearSlot, setSelectedGearSlot] = useState(null)
   const [selectedWeaponType, setSelectedWeaponType] = useState(null)
   const [selectedWeapon, setSelectedWeapon] = useState(null)
+  const [hoveredWeapon, setHoveredWeapon] = useState(null)
 
   const [weapons, setWeapons] = useState([])
 
@@ -82,6 +83,15 @@ const Workshop = () => {
     8: '#FD6960',
     9: '#FFC762',
     10: '#BB84FB'
+  }
+
+  const formatSlots = (slots) => {
+    const slotCount = Number(slots)
+
+    if (slotCount === 1) return 'O--'
+    if (slotCount === 2) return 'OO-'
+    if (slotCount === 3) return 'OOO'
+    return '---'
   }
 
   return (
@@ -246,25 +256,83 @@ const Workshop = () => {
         <section className="weapon-list-panel">
           <h2>Choose Weapon</h2>
 
-          <div className="weapon-list-buttons">
-            {filteredWeapons.map((weapon) => (
-              <button
-                key={weapon.id}
-                className="weapon-list-button"
-                onClick={() => {
-                  setSelectedWeapon(weapon)
-                  setSelectedWeaponType(null)
-                }}
-              >
-                <RarityIcon
-                  src={weaponIconsMap[weapon.type] || weaponIcon}
-                  color={rarityColorsMap[weapon.rare] || '#FFFFFF'}
-                  size={52}
-                  className="weapon-list-icon"
-                />
-                <span>{weapon.name}</span>
-              </button>
-            ))}
+          <div className="weapon-list-layout">
+            <div className="weapon-list-buttons">
+              {filteredWeapons.map((weapon) => (
+                <button
+                  key={weapon.id}
+                  className="weapon-list-button"
+                  onMouseEnter={() => setHoveredWeapon(weapon)}
+                  onMouseLeave={() => setHoveredWeapon(null)}
+                  onFocus={() => setHoveredWeapon(weapon)}
+                  onBlur={() => setHoveredWeapon(null)}
+                  onClick={() => {
+                    setSelectedWeapon(weapon)
+                    setSelectedWeaponType(null)
+                    setHoveredWeapon(null)
+                  }}
+                >
+                  <RarityIcon
+                    src={weaponIconsMap[weapon.type] || weaponIcon}
+                    color={rarityColorsMap[weapon.rare] || '#FFFFFF'}
+                    size={46}
+                    className="weapon-list-icon"
+                  />
+
+                  <span>{weapon.name}</span>
+                </button>
+              ))}
+            </div>
+
+            <aside className="weapon-preview-panel">
+              {hoveredWeapon ? (
+                <>
+                  <div className="weapon-preview-header">
+                    <RarityIcon
+                      src={weaponIconsMap[hoveredWeapon.type] || weaponIcon}
+                      color={rarityColorsMap[hoveredWeapon.rare] || '#FFFFFF'}
+                      size={60}
+                      className="weapon-preview-icon"
+                    />
+
+                    <div>
+                      <h3>{hoveredWeapon.name}</h3>
+                      <p>Rare {hoveredWeapon.rare}</p>
+                    </div>
+                  </div>
+
+                  <div className="weapon-preview-stats">
+                    <p><strong>Attack:</strong> {hoveredWeapon.attack}</p>
+                    <p><strong>Defense:</strong> {hoveredWeapon.defense ?? 0}</p>
+                    <p><strong>Affinity:</strong> {hoveredWeapon.affinity ?? 0}%</p>
+                    <p><strong>Slots:</strong> {formatSlots(hoveredWeapon.slots)}</p>
+                    <p><strong>Description:</strong> {hoveredWeapon.description ?? ""}</p>
+
+                    <div className="weapon-preview-elements">
+                      <strong>Elements:</strong>
+
+                      {hoveredWeapon.elements && hoveredWeapon.elements.length > 0 ? (
+                        <ul>
+                          {hoveredWeapon.elements.map((element, index) => (
+                            <li key={`${element.name}-${index}`}>
+                              {element.name}: {element.attack}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <ul>
+                          <li className="weapon-preview-none">None</li>
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <p className="weapon-preview-empty">
+                  Hover over a weapon to view details.
+                </p>
+              )}
+            </aside>
           </div>
         </section>
       )}
