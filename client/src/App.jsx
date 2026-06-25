@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRoutes } from 'react-router-dom'
 import Navigation from './components/Navigation'
-import Home from './pages/Home'
+import Workshop from './pages/Workshop'
 
 import './App.css'
 
@@ -9,17 +9,17 @@ const App = () => {
   let element = useRoutes([
     {
       path: '/',
-      element: <Home/>
+      element: <Workshop/>
     }
   ])
 
   return (
-    <div className='app'>
-
+    <div className="app">
       <Navigation />
 
-      { element }
-
+      <main className="page-content">
+        {element}
+      </main>
     </div>
   )
 }
