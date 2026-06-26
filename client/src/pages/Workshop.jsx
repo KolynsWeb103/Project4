@@ -29,6 +29,7 @@ import '../css/Workshop.css'
 
 const Workshop = () => {
   const [saveMessage, setSaveMessage] = useState(null)
+  const [gearSetName, setGearSetName] = useState('')
   const [selectedGearSlot, setSelectedGearSlot] = useState(null)
   const [selectedWeaponType, setSelectedWeaponType] = useState(null)
   const [hoveredGear, setHoveredGear] = useState(null)
@@ -79,7 +80,7 @@ const Workshop = () => {
   const gearSlots = [
     {
       id: 'weapon',
-      label: 'Weapon',
+      label: 'Weapon *',
       icon: weaponIcon
     },
     {
@@ -541,6 +542,7 @@ const Workshop = () => {
 
   const getGearSetPayload = () => {
     return {
+      name: gearSetName.trim(),
       gear: selectedGear,
       decorations: selectedDecorations,
       totalCost: getGearSetCost(),
@@ -551,6 +553,14 @@ const Workshop = () => {
   }
 
   const handleSaveGearSet = () => {
+    if (!gearSetName.trim()) {
+      setSaveMessage({
+        type: 'error',
+        text: 'Cannot save gear set. Please enter a gear set name.'
+      })
+      return
+    }
+
     if (!selectedGear.weapon) {
       setSaveMessage({
         type: 'error',
@@ -584,6 +594,18 @@ const Workshop = () => {
   return (
     <main className="workshop-page">
       <section className="workshop-top-layout">
+        <div className="gear-set-name-field">
+          <label htmlFor="gear-set-name">Gear Set Name *</label>
+
+          <input
+            id="gear-set-name"
+            type="text"
+            value={gearSetName}
+            onChange={(event) => setGearSetName(event.target.value)}
+            placeholder="Enter gear set name"
+          />
+        </div>
+
         <div className="gear-set-cost-label">
           💰 Gear Set Cost: {getGearSetCost()}z
         </div>
