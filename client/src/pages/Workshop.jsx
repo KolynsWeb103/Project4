@@ -49,6 +49,7 @@ const Workshop = () => {
   const [armors, setArmors] = useState([])
   const [skills, setSkills] = useState([])
   const [decorations, setDecorations] = useState([])
+  const [gearSearchText, setGearSearchText] = useState('')
 
   const [selectedDecorations, setSelectedDecorations] = useState({
     weapon: [],
@@ -270,11 +271,13 @@ const Workshop = () => {
     setSelectedGearSlot(gearSlotId)
     setSelectedWeaponType(null)
     setHoveredGear(null)
+    setGearSearchText('')
   }
 
   const handleWeaponTypeClick = (weaponTypeId) => {
     setSelectedWeaponType(weaponTypeId)
     setHoveredGear(null)
+    setGearSearchText('')
   }
 
   const handleGearClick = (gear) => {
@@ -289,15 +292,23 @@ const Workshop = () => {
   }
 
   const filteredGear = (() => {
+    let gearList = []
+
     if (selectedGearSlot === 'weapon') {
-      return weapons.filter(weapon => weapon.type === selectedWeaponType)
+      gearList = weapons.filter(weapon => weapon.type === selectedWeaponType)
+    } else if (selectedGearSlot) {
+      gearList = armors.filter(armor => armorBelongsToSlot(armor, selectedGearSlot))
     }
 
-    if (selectedGearSlot) {
-      return armors.filter(armor => armorBelongsToSlot(armor, selectedGearSlot))
+    const searchText = gearSearchText.trim().toLowerCase()
+
+    if (!searchText) {
+      return gearList
     }
 
-    return []
+    return gearList.filter((gear) => {
+      return gear.name.toLowerCase().includes(searchText)
+    })
   })()
 
   const shouldShowGearList =
@@ -716,28 +727,43 @@ const Workshop = () => {
             Only rarity 7 & above available due to resource limitation
           </p>
 
+          <div className="gear-search-bar">
+            <input
+              type="text"
+              value={gearSearchText}
+              onChange={(event) => setGearSearchText(event.target.value)}
+              placeholder={`Search ${getGearSlotLabel(selectedGearSlot).toLowerCase()}...`}
+            />
+          </div>
+
           <div className="weapon-list-layout">
             <div className="weapon-list-buttons">
-              {filteredGear.map((gear) => (
-                <button
-                  key={gear.id}
-                  className="weapon-list-button"
-                  onMouseEnter={() => setHoveredGear(gear)}
-                  onMouseLeave={() => setHoveredGear(null)}
-                  onFocus={() => setHoveredGear(gear)}
-                  onBlur={() => setHoveredGear(null)}
-                  onClick={() => handleGearClick(gear)}
-                >
-                  <RarityIcon
-                    src={getGearIcon(gear, selectedGearSlot)}
-                    color={rarityColorsMap[gear.rare] || '#FFFFFF'}
-                    size={46}
-                    className="weapon-list-icon"
-                  />
+              {filteredGear.length > 0 ? (
+                filteredGear.map((gear) => (
+                  <button
+                    key={gear.id}
+                    className="weapon-list-button"
+                    onMouseEnter={() => setHoveredGear(gear)}
+                    onMouseLeave={() => setHoveredGear(null)}
+                    onFocus={() => setHoveredGear(gear)}
+                    onBlur={() => setHoveredGear(null)}
+                    onClick={() => handleGearClick(gear)}
+                  >
+                    <RarityIcon
+                      src={getGearIcon(gear, selectedGearSlot)}
+                      color={rarityColorsMap[gear.rare] || '#FFFFFF'}
+                      size={46}
+                      className="weapon-list-icon"
+                    />
 
-                  <span>{gear.name}</span>
-                </button>
-              ))}
+                    <span>{gear.name}</span>
+                  </button>
+                ))
+              ) : (
+                <p className="gear-search-empty">
+                  No matching gear found.
+                </p>
+              )}
             </div>
 
             <aside className="weapon-preview-panel">

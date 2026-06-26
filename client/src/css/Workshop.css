@@ -506,6 +506,33 @@
   cursor: not-allowed;
 }
 
+/* =========================
+   Search bar
+========================= */
+
+.gear-search-bar {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.gear-search-bar input {
+  width: 100%;
+
+  background-color: black;
+  color: white;
+
+}
+
+.gear-search-bar input::placeholder {
+  color: #aaa;
+}
+
+.gear-search-empty {
+  margin: 1rem 0;
+
+  color: #aaa;
+  text-align: center;
+}
 
 /* =========================
    Save Gear Set
