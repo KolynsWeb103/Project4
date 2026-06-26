@@ -273,15 +273,41 @@ const Workshop = () => {
     selectedGearSlot &&
     (selectedGearSlot !== 'weapon' || selectedWeaponType)
 
+  const getSkillPointsFromGear = (gear) => {
+    if (!gear) return []
+
+    return gear.skill_points || gear['skill-points'] || []
+  }
+
+  const hasTorsoInc = (gear) => {
+    const skillPoints = getSkillPointsFromGear(gear)
+
+    return skillPoints.some(skill => skill.name === 'Torso Inc')
+  }
+
   const getSkillPointTotals = () => {
     const totals = {}
+    const plateGear = selectedGear.plate
+    const plateSkillPoints = getSkillPointsFromGear(plateGear)
 
-    Object.values(selectedGear).forEach((gear) => {
+    Object.entries(selectedGear).forEach(([slot, gear]) => {
       if (!gear) return
 
-      const skillPoints = gear.skill_points || gear['skill-points'] || []
+      const skillPoints = getSkillPointsFromGear(gear)
+
+      if (slot !== 'plate' && hasTorsoInc(gear)) {
+        plateSkillPoints.forEach((skill) => {
+          if (skill.name === 'Torso Inc') return
+
+          totals[skill.name] = (totals[skill.name] || 0) + Number(skill.points)
+        })
+
+        return
+      }
 
       skillPoints.forEach((skill) => {
+        if (skill.name === 'Torso Inc') return
+
         totals[skill.name] = (totals[skill.name] || 0) + Number(skill.points)
       })
     })
