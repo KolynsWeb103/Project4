@@ -273,6 +273,16 @@ const Workshop = () => {
     selectedGearSlot &&
     (selectedGearSlot !== 'weapon' || selectedWeaponType)
 
+  const getGearSetCost = () => {
+    return Object.values(selectedGear).reduce((total, gear) => {
+      if (!gear) return total
+
+      const cost = Number(gear.price ?? gear.cost ?? 0)
+
+      return total + cost
+    }, 0)
+  }
+
   const getNumberValue = (object, ...fields) => {
     if (!object) return 0
 
@@ -431,6 +441,9 @@ const Workshop = () => {
   return (
     <main className="workshop-page">
       <section className="workshop-top-layout">
+        <div className="gear-set-cost-label">
+          💰 Gear Set Cost: {getGearSetCost()}z
+        </div>
         <section className="gear-slot-buttons">
           {gearSlots.map((gearSlot) => {
             const selectedItem = getSelectedGearForSlot(gearSlot.id)

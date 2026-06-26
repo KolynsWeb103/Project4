@@ -35,6 +35,22 @@
   padding: 0;
 }
 
+.gear-set-cost-label {
+  width: 100%;
+
+  margin: 0 0 0.5rem;
+  padding: 0.75rem 1rem;
+
+  border-radius: 8px;
+
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
 
 /* =========================
    Gear Slot Buttons
