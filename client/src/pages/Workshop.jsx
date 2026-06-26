@@ -28,6 +28,7 @@ import heavyBowgunIcon from '../assets/icons/heavy-bowgun.png'
 import '../css/Workshop.css'
 
 const Workshop = () => {
+  const [saveMessage, setSaveMessage] = useState('')
   const [selectedGearSlot, setSelectedGearSlot] = useState(null)
   const [selectedWeaponType, setSelectedWeaponType] = useState(null)
   const [hoveredGear, setHoveredGear] = useState(null)
@@ -493,8 +494,6 @@ const Workshop = () => {
   const handleAddDecoration = (gearSlotId, decoration) => {
     if (!selectedGear[gearSlotId]) return
 
-    if (!canAddDecoration(gearSlotId, decoration)) return
-
     setSelectedDecorations(prev => ({
       ...prev,
       [gearSlotId]: [...prev[gearSlotId], decoration]
@@ -508,12 +507,76 @@ const Workshop = () => {
     }))
   }
 
+  const getInvalidDecorationSlots = () => {
+    return Object.keys(selectedGear).filter((gearSlotId) => {
+      const gear = selectedGear[gearSlotId]
+
+      if (!gear) return false
+
+      const usedSlots = getDecorationSlotsUsed(gearSlotId)
+      const maxSlots = getGearSlotCapacity(gearSlotId)
+
+      return usedSlots > maxSlots
+    })
+  }
+
+  const isGearSetValid = () => {
+    return getInvalidDecorationSlots().length === 0
+  }
+
+  const getGearSetPayload = () => {
+    return {
+      gear: selectedGear,
+      decorations: selectedDecorations,
+      totalCost: getGearSetCost(),
+      stats: getGearStats(),
+      skillPoints: getSkillPointTotals(),
+      activeSkills: getActivatedSkills()
+    }
+  }
+
+  const handleSaveGearSet = () => {
+    const invalidSlots = getInvalidDecorationSlots()
+
+    if (invalidSlots.length > 0) {
+      setSaveMessage(
+        `Cannot save gear set. Decorations exceed slot limits on: ${invalidSlots
+          .map(slot => getGearSlotLabel(slot))
+          .join(', ')}.`
+      )
+
+      return
+    }
+
+    const gearSet = getGearSetPayload()
+
+    console.log('Gear set is valid. Ready to save:', gearSet)
+
+    setSaveMessage('Gear set saved successfully!')
+  }
+
   return (
     <main className="workshop-page">
       <section className="workshop-top-layout">
         <div className="gear-set-cost-label">
           💰 Gear Set Cost: {getGearSetCost()}z
         </div>
+
+        <div className="gear-set-actions">
+          <button
+            className="save-gear-set-button"
+            onClick={handleSaveGearSet}
+          >
+            Save Gear Set
+          </button>
+
+          {saveMessage && (
+            <p className="save-gear-set-message">
+              {saveMessage}
+            </p>
+          )}
+        </div>
+
         <section className="gear-slot-buttons">
           {gearSlots.map((gearSlot) => {
             const selectedItem = getSelectedGearForSlot(gearSlot.id)
@@ -898,13 +961,11 @@ const DecorationSlotPanel = ({
 
         <div className="decoration-picker-list">
           {decorations.map((decoration) => {
-            const canAdd = canAddDecoration(gearSlotId, decoration)
 
             return (
               <button
                 key={decoration.id || decoration.name}
                 className="decoration-picker-button"
-                disabled={!canAdd}
                 onClick={() => onAddDecoration(gearSlotId, decoration)}
               >
                 <img src={decorationIcon} alt="" />
