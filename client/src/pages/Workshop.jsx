@@ -507,6 +507,8 @@ const Workshop = () => {
   const handleAddDecoration = (gearSlotId, decoration) => {
     if (!selectedGear[gearSlotId]) return
 
+    if (!canAddDecoration(gearSlotId, decoration)) return
+
     setSelectedDecorations(prev => ({
       ...prev,
       [gearSlotId]: [...prev[gearSlotId], decoration]
@@ -549,6 +551,11 @@ const Workshop = () => {
   }
 
   const handleSaveGearSet = () => {
+    if (!selectedGear.weapon) {
+      setSaveMessage('Cannot save gear set. Please select a weapon first.')
+      return
+    }
+
     const invalidSlots = getInvalidDecorationSlots()
 
     if (invalidSlots.length > 0) {
@@ -981,11 +988,13 @@ const DecorationSlotPanel = ({
 
         <div className="decoration-picker-list">
           {decorations.map((decoration) => {
+            const canAdd = canAddDecoration(gearSlotId, decoration)
 
             return (
               <button
                 key={decoration.id || decoration.name}
                 className="decoration-picker-button"
+                disabled={!canAdd}
                 onClick={() => onAddDecoration(gearSlotId, decoration)}
               >
                 <RarityIcon
