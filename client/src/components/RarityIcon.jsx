@@ -8,8 +8,24 @@ const RarityIcon = ({ src, color, size = 52, className = '' }) => {
     img.src = src
 
     img.onload = () => {
+      const targetCanvas = canvasRef.current
+
+      if (!targetCanvas) {
+        return
+      }
+
+      const targetCtx = targetCanvas.getContext('2d')
+
+      if (!targetCtx) {
+        return
+      }
+
       const sourceCanvas = document.createElement('canvas')
       const sourceCtx = sourceCanvas.getContext('2d')
+
+      if (!sourceCtx) {
+        return
+      }
 
       sourceCanvas.width = img.naturalWidth
       sourceCanvas.height = img.naturalHeight
