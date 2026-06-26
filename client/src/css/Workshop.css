@@ -1,4 +1,14 @@
 /* =========================
+   Global Stability
+========================= */
+
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+
+/* =========================
    Page Layout
 ========================= */
 
@@ -35,21 +45,10 @@
   padding: 0;
 }
 
-.gear-set-cost-label {
-  width: 100%;
 
-  margin: 0 0 0.5rem;
-  padding: 0.75rem 1rem;
-
-  border-radius: 8px;
-
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
-
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-align: center;
-}
+/* =========================
+   Gear Set Name + Cost
+========================= */
 
 .gear-set-name-field {
   width: 100%;
@@ -67,12 +66,29 @@
 
 .gear-set-name-field input {
   width: 100%;
+
   background-color: rgba(0, 0, 0, 0.75);
   color: white;
 }
 
 .gear-set-name-field input::placeholder {
   color: #aaa;
+}
+
+.gear-set-cost-label {
+  width: 100%;
+
+  margin: 0 0 0.5rem;
+  padding: 0.75rem 1rem;
+
+  border-radius: 8px;
+
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 
@@ -88,7 +104,16 @@
   gap: 1rem;
 }
 
+.gear-slot-card {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .gear-slot-button {
+  width: 100%;
   height: 100px;
   margin: 0;
 
@@ -111,7 +136,116 @@
 
 
 /* =========================
-   Skill Panels Layout
+   Decoration Panels
+========================= */
+
+.decoration-slot-panel {
+  width: 100%;
+  min-height: 120px;
+
+  padding: 0.6rem;
+
+  border: 1px solid var(--muted-border-color);
+  border-radius: 8px;
+
+  background-color: rgba(0, 0, 0, 0.55);
+  color: white;
+
+  font-size: 0.85rem;
+}
+
+.decoration-slot-panel-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #aaa;
+}
+
+.decoration-slot-panel-disabled p {
+  margin: 0;
+}
+
+.decoration-slot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 0.5rem;
+}
+
+.equipped-decorations {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  margin-bottom: 0.5rem;
+}
+
+.equipped-decoration-button,
+.decoration-picker-button {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  gap: 0.4rem;
+  align-items: center;
+
+  padding: 0.35rem 0.45rem;
+
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.decoration-icon,
+.decoration-icon.rarity-icon-wrapper {
+  width: 22px;
+  height: 22px;
+}
+
+.equipped-decoration-button span,
+.decoration-picker-button span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.decoration-empty {
+  margin: 0;
+
+  color: #aaa;
+  text-align: center;
+}
+
+.decoration-picker {
+  margin-top: 0.4rem;
+}
+
+.decoration-picker summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.decoration-picker-list {
+  max-height: 180px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  margin-top: 0.5rem;
+
+  overflow-y: auto;
+}
+
+.decoration-picker-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+
+/* =========================
+   Info Panels Layout
 ========================= */
 
 .skill-panels-layout {
@@ -124,7 +258,7 @@
 
 
 /* =========================
-   Skill Summary + Activated Skills Panels
+   Gear Stats + Skill Panels
 ========================= */
 
 .gear-stats-panel,
@@ -151,7 +285,11 @@
   margin: 0 0 0.75rem;
   padding: 0;
 
+  font-size: 1.1rem;
+  line-height: 1.2;
   text-align: center;
+  white-space: nowrap;
+
   flex-shrink: 0;
 }
 
@@ -201,6 +339,7 @@
 .skill-summary-empty,
 .activated-skills-empty {
   margin: 0;
+
   color: #aaa;
   text-align: center;
 }
@@ -275,7 +414,32 @@
   color: #ccc;
 }
 
+.gear-search-bar {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.gear-search-bar input {
+  width: 100%;
+
+  background-color: black;
+  color: white;
+}
+
+.gear-search-bar input::placeholder {
+  color: #aaa;
+}
+
+.gear-search-empty {
+  margin: 1rem 0;
+
+  color: #aaa;
+  text-align: center;
+}
+
 .weapon-list-layout {
+  min-height: 420px;
+
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 1rem;
@@ -283,9 +447,15 @@
 }
 
 .weapon-list-buttons {
+  min-height: 800px;
+  max-height: 800px;
+  overflow-y: scroll;
+
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.75rem;
+
+  padding-right: 0.25rem;
 }
 
 .weapon-list-button {
@@ -319,6 +489,7 @@
 .weapon-preview-panel {
   width: 400px;
   min-height: 260px;
+  max-height: 800px;
 
   padding: 1rem;
 
@@ -329,8 +500,7 @@
 
   text-align: left;
 
-  position: sticky;
-  top: 2rem;
+  position: static;
 }
 
 .weapon-preview-header {
@@ -377,164 +547,6 @@
 
 
 /* =========================
-   Gear Slot Cards
-   Gear button + decorations
-========================= */
-
-.gear-slot-card {
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.gear-slot-button {
-  width: 100%;
-}
-
-
-/* =========================
-   Decoration Panels
-========================= */
-
-.decoration-slot-panel {
-  width: 100%;
-  min-height: 120px;
-
-  padding: 0.6rem;
-
-  border: 1px solid var(--muted-border-color);
-  border-radius: 8px;
-
-  background-color: rgba(0, 0, 0, 0.55);
-  color: white;
-
-  font-size: 0.85rem;
-}
-
-.decoration-slot-panel-disabled {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #aaa;
-}
-
-.decoration-slot-panel-disabled p {
-  margin: 0;
-}
-
-.decoration-slot-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 0.5rem;
-}
-
-.equipped-decorations {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-
-  margin-bottom: 0.5rem;
-}
-
-.equipped-decoration-button,
-.decoration-picker-button {
-  width: 100%;
-
-  display: grid;
-  grid-template-columns: 24px 1fr auto;
-  gap: 0.4rem;
-  align-items: center;
-
-  padding: 0.35rem 0.45rem;
-
-  font-size: 0.8rem;
-  text-align: left;
-}
-
-.decoration-icon {
-  width: 22px;
-  height: 22px;
-}
-
-.decoration-icon.rarity-icon-wrapper {
-  width: 22px;
-  height: 22px;
-}
-
-.equipped-decoration-button span,
-.decoration-picker-button span {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.decoration-empty {
-  margin: 0;
-
-  color: #aaa;
-  text-align: center;
-}
-
-.decoration-picker {
-  margin-top: 0.4rem;
-}
-
-.decoration-picker summary {
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
-.decoration-picker-list {
-  max-height: 180px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-
-  margin-top: 0.5rem;
-
-  overflow-y: auto;
-}
-
-.decoration-picker-button:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-/* =========================
-   Search bar
-========================= */
-
-.gear-search-bar {
-  width: 100%;
-  margin: 1rem 0;
-}
-
-.gear-search-bar input {
-  width: 100%;
-
-  background-color: black;
-  color: white;
-
-}
-
-.gear-search-bar input::placeholder {
-  color: #aaa;
-}
-
-.gear-search-empty {
-  margin: 1rem 0;
-
-  color: #aaa;
-  text-align: center;
-}
-
-/* =========================
    Save Gear Set
 ========================= */
 
@@ -553,9 +565,17 @@
   color: #ff0d00;
 }
 
+
 /* =========================
    Responsive Layout
 ========================= */
+
+@media (min-width: 1000px) {
+  .weapon-preview-panel {
+    position: sticky;
+    top: 2rem;
+  }
+}
 
 @media (max-width: 800px) {
   .gear-slot-buttons {
