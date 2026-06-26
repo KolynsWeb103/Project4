@@ -8,7 +8,24 @@ const Navigation = () => {
         <ul>
         <li>
             <h1>MHFU Gear Workshop 🛡️</h1>
-            <p className="nav-subtitle">Source: https://github.com/Kolyn090/mhfu-db</p>
+            <div className="nav-subtitle">
+                <span>Data sources:</span>
+                <a
+                    href="https://github.com/Kolyn090/mhfu-db"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    https://github.com/Kolyn090/mhfu-db
+                </a>
+                <span>·</span>
+                <a
+                    href="https://github.com/vallode/mhfu-blacksmith.git"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    mhfu-blacksmith
+                </a>
+                </div>
         </li>
         </ul>
 
