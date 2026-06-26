@@ -273,6 +273,50 @@ const Workshop = () => {
     selectedGearSlot &&
     (selectedGearSlot !== 'weapon' || selectedWeaponType)
 
+  const getNumberValue = (object, ...fields) => {
+    if (!object) return 0
+
+    for (const field of fields) {
+      if (object[field] !== undefined && object[field] !== null) {
+        return Number(object[field]) || 0
+      }
+    }
+
+    return 0
+  }
+
+  const getGearStats = () => {
+    const stats = {
+      attack: 0,
+      defense: 0,
+      affinity: 0,
+      fireRes: 0,
+      waterRes: 0,
+      thunderRes: 0,
+      iceRes: 0,
+      dragonRes: 0
+    }
+
+    Object.entries(selectedGear).forEach(([slot, gear]) => {
+      if (!gear) return
+
+      if (slot === 'weapon') {
+        stats.attack += getNumberValue(gear, 'attack')
+        stats.affinity += getNumberValue(gear, 'affinity')
+      }
+
+      stats.defense += getNumberValue(gear, 'defense')
+
+      stats.fireRes += getNumberValue(gear, 'fire_res', 'fireRes', 'fire')
+      stats.waterRes += getNumberValue(gear, 'water_res', 'waterRes', 'water')
+      stats.thunderRes += getNumberValue(gear, 'thunder_res', 'thunderRes', 'thunder')
+      stats.iceRes += getNumberValue(gear, 'ice_res', 'iceRes', 'ice')
+      stats.dragonRes += getNumberValue(gear, 'dragon_res', 'dragonRes', 'dragon')
+    })
+
+    return stats
+  }
+
   const getSkillPointsFromGear = (gear) => {
     if (!gear) return []
 
@@ -415,6 +459,7 @@ const Workshop = () => {
         </section>
 
         <section className="skill-panels-layout">
+          <GearStatsPanel stats={getGearStats()} />
           <SkillSummaryPanel skills={getSkillPointTotals()} />
           <ActivatedSkillsPanel activatedSkills={getActivatedSkills()} />
         </section>
@@ -491,6 +536,56 @@ const Workshop = () => {
   )
 }
 
+const GearStatsPanel = ({ stats }) => {
+  return (
+    <aside className="gear-stats-panel">
+      <h2>Gear Stats</h2>
+
+      <div className="gear-stats-list">
+        <div className="gear-stats-row">
+          <span>Attack</span>
+          <strong>{stats.attack}</strong>
+        </div>
+
+        <div className="gear-stats-row">
+          <span>Defense</span>
+          <strong>{stats.defense}</strong>
+        </div>
+
+        <div className="gear-stats-row">
+          <span>Affinity</span>
+          <strong>{stats.affinity}%</strong>
+        </div>
+
+        <div className="gear-stats-row">
+          <span>Fire Res</span>
+          <strong>{stats.fireRes}</strong>
+        </div>
+
+        <div className="gear-stats-row">
+          <span>Water Res</span>
+          <strong>{stats.waterRes}</strong>
+        </div>
+
+        <div className="gear-stats-row">
+          <span>Thunder Res</span>
+          <strong>{stats.thunderRes}</strong>
+        </div>
+
+        <div className="gear-stats-row">
+          <span>Ice Res</span>
+          <strong>{stats.iceRes}</strong>
+        </div>
+
+        <div className="gear-stats-row">
+          <span>Dragon Res</span>
+          <strong>{stats.dragonRes}</strong>
+        </div>
+      </div>
+    </aside>
+  )
+}
+
 const SkillSummaryPanel = ({ skills }) => {
   return (
     <aside className="skill-summary-panel">
@@ -523,7 +618,7 @@ const SkillSummaryPanel = ({ skills }) => {
 const ActivatedSkillsPanel = ({ activatedSkills }) => {
   return (
     <aside className="activated-skills-panel">
-      <h2>Activated Skills</h2>
+      <h2>Active Skills</h2>
 
       {activatedSkills.length > 0 ? (
         <div className="activated-skills-list">

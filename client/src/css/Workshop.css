@@ -19,7 +19,7 @@
 
 .workshop-top-layout {
   width: 100%;
-  max-width: 950px;
+  max-width: 1200px;
 
   display: flex;
   flex-direction: column;
@@ -78,7 +78,7 @@
   width: 100%;
 
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -87,6 +87,7 @@
    Skill Summary + Activated Skills Panels
 ========================= */
 
+.gear-stats-panel,
 .skill-summary-panel,
 .activated-skills-panel {
   width: 100%;
@@ -104,6 +105,7 @@
   flex-direction: column;
 }
 
+.gear-stats-panel h2,
 .skill-summary-panel h2,
 .activated-skills-panel h2 {
   margin: 0 0 0.75rem;
@@ -113,6 +115,7 @@
   flex-shrink: 0;
 }
 
+.gear-stats-list,
 .skill-summary-list,
 .activated-skills-list {
   min-height: 0;
@@ -125,6 +128,7 @@
   padding-right: 0.25rem;
 }
 
+.gear-stats-row,
 .skill-summary-row,
 .activated-skill-row {
   display: flex;
@@ -145,8 +149,9 @@
   align-items: flex-start;
 }
 
+.gear-stats-row strong,
 .skill-summary-row strong {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .activated-skill-row small {
@@ -354,11 +359,12 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 650px) {
   .skill-panels-layout {
     grid-template-columns: 1fr;
   }
 
+  .gear-stats-panel,
   .skill-summary-panel,
   .activated-skills-panel {
     height: 320px;
