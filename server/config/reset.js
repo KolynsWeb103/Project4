@@ -169,7 +169,8 @@ const createDecorationsTable = async () => {
       name VARCHAR(255),
       slots INTEGER,
       price INTEGER,
-      skill_points JSONB
+      skill_points JSONB,
+      color VARCHAR(255)
     )
   `
 
@@ -183,10 +184,11 @@ const seedDecorationsTable = async () => {
       name,
       slots,
       price,
-      skill_points
+      skill_points,
+      color
     )
     VALUES (
-      $1, $2, $3, $4, $5
+      $1, $2, $3, $4, $5, $6
     )
   `
 
@@ -199,7 +201,8 @@ const seedDecorationsTable = async () => {
       decoration.name,
       decoration.slots,
       decoration.price,
-      JSON.stringify(decoration["skill-points"])
+      JSON.stringify(decoration["skill-points"]),
+      decoration.color
     ])
   }
 }

@@ -202,6 +202,19 @@ const Workshop = () => {
     10: '#BB84FB'
   }
 
+  const decorationColorsMap = {
+    "blue": '#80C2FC',
+    "sky": '#97E0EF',
+    "gray": '#A0A0A0',
+    "green": '#86BF8D',
+    "orange": '#FF9661',
+    "pink": '#EA9AA4',
+    "red": '#FD6960',
+    "purple": '#AFA0C5',
+    "white": '#FFFFFF',
+    "yellow": '#FFC762'
+  };
+
   const formatSlots = (slots) => {
     const slotCount = Number(slots)
 
@@ -610,6 +623,7 @@ const Workshop = () => {
                   decorations={decorations}
                   selectedDecorations={selectedDecorations[gearSlot.id]}
                   decorationIcon={decorationIcon}
+                  decorationColorsMap={decorationColorsMap}
                   usedSlots={getDecorationSlotsUsed(gearSlot.id)}
                   maxSlots={getGearSlotCapacity(gearSlot.id)}
                   canAddDecoration={canAddDecoration}
@@ -916,6 +930,7 @@ const DecorationSlotPanel = ({
   decorations,
   selectedDecorations,
   decorationIcon,
+  decorationColorsMap,
   usedSlots,
   maxSlots,
   canAddDecoration,
@@ -946,7 +961,12 @@ const DecorationSlotPanel = ({
               onClick={() => onRemoveDecoration(gearSlotId, index)}
               title="Remove decoration"
             >
-              <img src={decorationIcon} alt="" />
+              <RarityIcon
+                src={decorationIcon}
+                color={decorationColorsMap[decoration.color] || '#FFFFFF'}
+                size={22}
+                className="decoration-icon"
+              />
               <span>{decoration.name}</span>
               <small>-</small>
             </button>
@@ -968,7 +988,12 @@ const DecorationSlotPanel = ({
                 className="decoration-picker-button"
                 onClick={() => onAddDecoration(gearSlotId, decoration)}
               >
-                <img src={decorationIcon} alt="" />
+                <RarityIcon
+                  src={decorationIcon}
+                  color={decorationColorsMap[decoration.color] || '#FFFFFF'}
+                  size={22}
+                  className="decoration-icon"
+                />
 
                 <span>{decoration.name}</span>
 

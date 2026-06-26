@@ -8,7 +8,8 @@
         "name": "Attack",
         "points": 1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Fierce Jewel",
@@ -23,7 +24,8 @@
         "name": "Defense",
         "points": -1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Strongest Jewel",
@@ -38,7 +40,8 @@
         "name": "Defense",
         "points": -1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Defense Jewel",
@@ -49,7 +52,8 @@
         "name": "Defense",
         "points": 1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Turtle Jewel",
@@ -64,7 +68,8 @@
         "name": "All Resist",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Turtle Jewel",
@@ -79,7 +84,8 @@
         "name": "All Resist",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Steadfast Jewel",
@@ -94,7 +100,8 @@
         "name": "Paralysis",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Anti-Faint Jewel",
@@ -109,7 +116,8 @@
         "name": "Paralysis",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Steadfast Jewel+",
@@ -120,7 +128,8 @@
         "name": "Faint",
         "points": 2
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Paralysis Jewel",
@@ -135,7 +144,8 @@
         "name": "Poison",
         "points": -1
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "AntiParalyzJewel",
@@ -150,7 +160,8 @@
         "name": "Poison",
         "points": -1
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Paralysis Jewel+",
@@ -161,7 +172,8 @@
         "name": "Paralysis",
         "points": 2
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Pep Jewel",
@@ -176,7 +188,8 @@
         "name": "Water Res",
         "points": -1
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Jolt Jewel",
@@ -187,7 +200,8 @@
         "name": "Sleep",
         "points": 2
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Antidote Jewel",
@@ -202,7 +216,8 @@
         "name": "Faint",
         "points": -1
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Antivenin Jewel",
@@ -217,7 +232,8 @@
         "name": "Faint",
         "points": -1
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Antidote Jewel+",
@@ -228,7 +244,8 @@
         "name": "Poison",
         "points": 2
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Retroviral Jewel",
@@ -243,7 +260,8 @@
         "name": "Sneak",
         "points": -1
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Antiviral Jewel",
@@ -254,7 +272,8 @@
         "name": "Antiseptic",
         "points": 2
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Antiviral Jewel",
@@ -265,7 +284,8 @@
         "name": "Antiseptic",
         "points": 2
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Tireless Jewel",
@@ -276,7 +296,8 @@
         "name": "Fatigue",
         "points": 2
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Tireless Jewel",
@@ -287,7 +308,8 @@
         "name": "Fatigue",
         "points": 2
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Anchor Jewel",
@@ -302,7 +324,8 @@
         "name": "Sleep",
         "points": -1
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Tectonic Jewel",
@@ -317,7 +340,8 @@
         "name": "Sleep",
         "points": -1
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Tectonic Jewel",
@@ -332,7 +356,8 @@
         "name": "Sleep",
         "points": -1
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Snowblower Jewel",
@@ -347,7 +372,8 @@
         "name": "Terrain",
         "points": -1
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Snowplow Jewel",
@@ -362,7 +388,8 @@
         "name": "Terrain",
         "points": -1
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "SnowblowerJewel+",
@@ -373,7 +400,8 @@
         "name": "Snow Res",
         "points": 2
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Tip Toe Jewel",
@@ -388,7 +416,8 @@
         "name": "Map",
         "points": -1
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Ninja Jewel",
@@ -399,7 +428,8 @@
         "name": "Sneak",
         "points": 2
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Strength Jewel",
@@ -410,7 +440,8 @@
         "name": "Health",
         "points": 2
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Artisan Jewel",
@@ -425,7 +456,8 @@
         "name": "Potential",
         "points": -1
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Artisan Jewel",
@@ -440,7 +472,8 @@
         "name": "Potential",
         "points": -1
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Master Jewel",
@@ -455,7 +488,8 @@
         "name": "Potential",
         "points": -2
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Fencer Jewel",
@@ -470,7 +504,8 @@
         "name": "Recovery",
         "points": -1
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Fencer Jewel",
@@ -485,7 +520,8 @@
         "name": "Recovery",
         "points": -1
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Swordsman Jewel",
@@ -500,7 +536,8 @@
         "name": "Recovery",
         "points": -2
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Razor Jewel",
@@ -515,7 +552,8 @@
         "name": "Defense",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Cutter Jewel",
@@ -530,7 +568,8 @@
         "name": "Defense",
         "points": -2
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Sword Draw Jewel",
@@ -545,7 +584,8 @@
         "name": "Expert",
         "points": -1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Sword Draw Jewel",
@@ -560,7 +600,8 @@
         "name": "Expert",
         "points": -1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "UnsheathingJewel",
@@ -575,7 +616,8 @@
         "name": "Expert",
         "points": -1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "ShortChargeJewel",
@@ -590,7 +632,8 @@
         "name": "Constitutn",
         "points": -1
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "ShortChargeJewel",
@@ -605,7 +648,8 @@
         "name": "Constitutn",
         "points": -1
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "RapidChargeJewel",
@@ -620,7 +664,8 @@
         "name": "Constitutn",
         "points": -2
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "Expert Jewel",
@@ -635,7 +680,8 @@
         "name": "Health",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Celebrity Jewel",
@@ -650,7 +696,8 @@
         "name": "Health",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Celebrity Jewel",
@@ -665,7 +712,8 @@
         "name": "Health",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Hermit Jewel",
@@ -680,7 +728,8 @@
         "name": "Health",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Grinder Jewel",
@@ -691,7 +740,8 @@
         "name": "SwdShrpner",
         "points": 2
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Stone Wall Jewel",
@@ -706,7 +756,8 @@
         "name": "Stamina",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "IronCurtainJewel",
@@ -721,7 +772,8 @@
         "name": "Stamina",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "IronCurtainJewel",
@@ -736,7 +788,8 @@
         "name": "Stamina",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Hard Wall Jewel",
@@ -751,7 +804,8 @@
         "name": "Stamina",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "StrongWall Jewel",
@@ -766,7 +820,8 @@
         "name": "Stamina",
         "points": -2
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Wall Jewel",
@@ -781,7 +836,8 @@
         "name": "Stamina",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "HvnlyShieldJewel",
@@ -792,7 +848,8 @@
         "name": "Auto-Guard",
         "points": 2
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Hardball Jewel",
@@ -803,7 +860,8 @@
         "name": "Throw",
         "points": 2
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Early Bird Jewel",
@@ -818,7 +876,8 @@
         "name": "Hunger",
         "points": -1
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "High Speed Jewel",
@@ -833,7 +892,8 @@
         "name": "Hunger",
         "points": -1
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "High Speed Jewel",
@@ -848,7 +908,8 @@
         "name": "Hunger",
         "points": -1
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Cont. Fire Jewel",
@@ -863,7 +924,8 @@
         "name": "Protection",
         "points": -1
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Cont. Fire Jewel",
@@ -878,7 +940,8 @@
         "name": "Protection",
         "points": -1
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Barrage Jewel",
@@ -893,7 +956,8 @@
         "name": "Protection",
         "points": -2
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Recoilless Jewel",
@@ -908,7 +972,8 @@
         "name": "Reload",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Recoilless Jewel",
@@ -923,7 +988,8 @@
         "name": "Reload",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Shockless Jewel",
@@ -938,7 +1004,8 @@
         "name": "Reload",
         "points": -2
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "StrongShot Jewel",
@@ -953,7 +1020,8 @@
         "name": "Reload",
         "points": -1
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "StrongShotJewel+",
@@ -968,7 +1036,8 @@
         "name": "Reload",
         "points": -2
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Pierce Jewel",
@@ -983,7 +1052,8 @@
         "name": "Reload",
         "points": -1
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Pierce Jewel+",
@@ -998,7 +1068,8 @@
         "name": "Reload",
         "points": -2
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Pellet Jewel",
@@ -1013,7 +1084,8 @@
         "name": "Reload",
         "points": -1
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Pellet Jewel+",
@@ -1028,7 +1100,8 @@
         "name": "Reload",
         "points": -2
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Shot Bonus Jewel",
@@ -1039,7 +1112,8 @@
         "name": "NormalSAdd",
         "points": 2
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "PierceBonusJewel",
@@ -1050,7 +1124,8 @@
         "name": "PierceSAdd",
         "points": 2
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "PelletBonusJewel",
@@ -1061,7 +1136,8 @@
         "name": "PelletSAdd",
         "points": 2
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "Crag Bonus Jewel",
@@ -1072,7 +1148,8 @@
         "name": "Crag S Add",
         "points": 2
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "ScattrBonusJewel",
@@ -1083,7 +1160,8 @@
         "name": "ClustS Add",
         "points": 2
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "Power Coat Jewel",
@@ -1098,7 +1176,8 @@
         "name": "ShortCharg",
         "points": -1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "PowerCAddJewel",
@@ -1113,7 +1192,8 @@
         "name": "ShortCharg",
         "points": -1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Combo Coat Jewel",
@@ -1124,7 +1204,8 @@
         "name": "ClsRngCAdd",
         "points": 2
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "PoisonCoatJewel",
@@ -1135,7 +1216,8 @@
         "name": "PoisonCAdd",
         "points": 2
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "ParalysCoatJewel",
@@ -1150,7 +1232,8 @@
         "name": "ShortCharg",
         "points": -1
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "ParalysisCAddJwl",
@@ -1165,7 +1248,8 @@
         "name": "ShortCharg",
         "points": -1
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Sleep Coat Jewel",
@@ -1176,7 +1260,8 @@
         "name": "SleepCAdd",
         "points": 2
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Ammo Box Jewel",
@@ -1191,7 +1276,8 @@
         "name": "Reload",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Ammo Box Jewel",
@@ -1206,7 +1292,8 @@
         "name": "Reload",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Magazine Jewel",
@@ -1221,7 +1308,8 @@
         "name": "Reload",
         "points": -2
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Sniper Jewel",
@@ -1236,7 +1324,8 @@
         "name": "AutoReload",
         "points": -1
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "SharpshootrJewel",
@@ -1247,7 +1336,8 @@
         "name": "Precision",
         "points": 2
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "SpecialAtk Jewel",
@@ -1262,7 +1352,8 @@
         "name": "Rec Speed",
         "points": -1
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "SpecialAtkJewel+",
@@ -1277,7 +1368,8 @@
         "name": "Rec Speed",
         "points": -1
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "Element Jewel",
@@ -1292,7 +1384,8 @@
         "name": "Rec Speed",
         "points": -1
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "Element Jewel+",
@@ -1307,7 +1400,8 @@
         "name": "Rec Speed",
         "points": -2
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "Bombardier Jewel",
@@ -1318,7 +1412,8 @@
         "name": "BombStrUp",
         "points": 2
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "TrapMasterJewel",
@@ -1329,7 +1424,8 @@
         "name": "SpeedSetup",
         "points": 2
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "PickyEater Jewel",
@@ -1344,7 +1440,8 @@
         "name": "Cooking",
         "points": -1
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Fasting Jewel",
@@ -1359,7 +1456,8 @@
         "name": "Cooking",
         "points": -1
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "No Food Jewel",
@@ -1370,7 +1468,8 @@
         "name": "Hunger",
         "points": 2
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Fatso Jewel",
@@ -1381,7 +1480,8 @@
         "name": "Gluttony",
         "points": 2
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "QuickEaterJewel",
@@ -1396,7 +1496,8 @@
         "name": "Recovery",
         "points": -1
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Fast Food Jewel",
@@ -1411,7 +1512,8 @@
         "name": "Recovery",
         "points": -1
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Scarfing Jewel",
@@ -1426,7 +1528,8 @@
         "name": "Recovery",
         "points": -2
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "BBQ Jewel",
@@ -1437,7 +1540,8 @@
         "name": "BBQ",
         "points": 2
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "Marathon Jewel",
@@ -1452,7 +1556,8 @@
         "name": "Hunger",
         "points": -1
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Sprinter Jewel",
@@ -1467,7 +1572,8 @@
         "name": "Hunger",
         "points": -2
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Sprinter Jewel",
@@ -1482,7 +1588,8 @@
         "name": "Hunger",
         "points": -2
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "ConstitutnJewel",
@@ -1497,7 +1604,8 @@
         "name": "Stamina",
         "points": -1
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Health Jewel",
@@ -1512,7 +1620,8 @@
         "name": "Stamina",
         "points": -1
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Health Jewel",
@@ -1527,7 +1636,8 @@
         "name": "Stamina",
         "points": -1
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Protection Jewel",
@@ -1538,7 +1648,8 @@
         "name": "Protection",
         "points": 1
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "DivineProtectJwl",
@@ -1549,7 +1660,8 @@
         "name": "Protection",
         "points": 2
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Earplug Jewel",
@@ -1564,7 +1676,8 @@
         "name": "Protection",
         "points": -1
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Earplug Jewel",
@@ -1579,7 +1692,8 @@
         "name": "Protection",
         "points": -1
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Silencer Jewel",
@@ -1594,7 +1708,8 @@
         "name": "Protection",
         "points": -2
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Silencer Jewel",
@@ -1609,7 +1724,8 @@
         "name": "Protection",
         "points": -2
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "PaperweightJewel",
@@ -1624,7 +1740,8 @@
         "name": "Fate",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "HeavyMetal Jewel",
@@ -1639,7 +1756,8 @@
         "name": "Fate",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Solid Rock Jewel",
@@ -1654,7 +1772,8 @@
         "name": "Fate",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Melt-Proof Jewel",
@@ -1669,7 +1788,8 @@
         "name": "Faint",
         "points": -1
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "Anti-Thaw Jewel",
@@ -1684,7 +1804,8 @@
         "name": "Faint",
         "points": -1
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "Anti-Thaw Jewel",
@@ -1699,7 +1820,8 @@
         "name": "Faint",
         "points": -1
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "Evade Jewel",
@@ -1714,7 +1836,8 @@
         "name": "Cold Res",
         "points": -1
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Evade Jewel",
@@ -1729,7 +1852,8 @@
         "name": "Cold Res",
         "points": -1
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Dodge Jewel",
@@ -1744,7 +1868,8 @@
         "name": "Cold Res",
         "points": -1
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Jumping Jewel",
@@ -1759,7 +1884,8 @@
         "name": "Attack",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Jumping Jewel",
@@ -1774,7 +1900,8 @@
         "name": "Attack",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Flying Jewel",
@@ -1789,7 +1916,8 @@
         "name": "Attack",
         "points": -2
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Danger Jewel",
@@ -1804,7 +1932,8 @@
         "name": "Protection",
         "points": -1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Crisis Jewel",
@@ -1819,7 +1948,8 @@
         "name": "Protection",
         "points": -2
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Pinch Jewel",
@@ -1834,7 +1964,8 @@
         "name": "Protection",
         "points": -1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Guts Jewel",
@@ -1849,7 +1980,8 @@
         "name": "MixSucRate",
         "points": -1
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "More Guts Jewel",
@@ -1864,7 +1996,8 @@
         "name": "MixSucRate",
         "points": -1
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "Alarm Jewel",
@@ -1875,7 +2008,8 @@
         "name": "Anti-Theft",
         "points": 2
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "StayingPwr Jewel",
@@ -1890,7 +2024,8 @@
         "name": "Poison",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Permanence Jewel",
@@ -1905,7 +2040,8 @@
         "name": "Poison",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Eternal Jewel",
@@ -1920,7 +2056,8 @@
         "name": "Poison",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Friendship Jewel",
@@ -1935,7 +2072,8 @@
         "name": "Sneak",
         "points": -1
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "Beloved Jewel",
@@ -1950,7 +2088,8 @@
         "name": "Sneak",
         "points": -1
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "Tenderness Jewel",
@@ -1965,7 +2104,8 @@
         "name": "Sneak",
         "points": -1
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "Backpacker Jewel",
@@ -1976,7 +2116,8 @@
         "name": "Backpackng",
         "points": 2
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Impervious Jewel",
@@ -1991,7 +2132,8 @@
         "name": "Everlastng",
         "points": -1
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Omnipotent Jewel",
@@ -2006,7 +2148,8 @@
         "name": "Everlastng",
         "points": -1
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "TrueResistJewel",
@@ -2021,7 +2164,8 @@
         "name": "Everlastng",
         "points": -1
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Inferno Jewel",
@@ -2036,7 +2180,8 @@
         "name": "Water Res",
         "points": -1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Crimson Jewel",
@@ -2047,7 +2192,8 @@
         "name": "Fire Res",
         "points": 2
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Stream Jewel",
@@ -2062,7 +2208,8 @@
         "name": "ThunderRes",
         "points": -1
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Torrent Jewel",
@@ -2073,7 +2220,8 @@
         "name": "Water Res",
         "points": 2
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Freeze Jewel",
@@ -2088,7 +2236,8 @@
         "name": "Fire Res",
         "points": -1
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Glacier Jewel",
@@ -2099,7 +2248,8 @@
         "name": "Ice Res",
         "points": 2
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Lightning Jewel",
@@ -2114,7 +2264,8 @@
         "name": "Ice Res",
         "points": -1
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Thunder Jewel",
@@ -2125,7 +2276,8 @@
         "name": "ThunderRes",
         "points": 2
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Slayer Jewel",
@@ -2140,7 +2292,8 @@
         "name": "Poison",
         "points": -1
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Extinction Jewel",
@@ -2155,7 +2308,8 @@
         "name": "Poison",
         "points": -1
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "DragonslyrJewel",
@@ -2166,7 +2320,8 @@
         "name": "Dragon Res",
         "points": 2
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "CoolBreeze Jewel",
@@ -2181,7 +2336,8 @@
         "name": "Cold Res",
         "points": -1
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Cold Wind Jewel",
@@ -2196,7 +2352,8 @@
         "name": "Cold Res",
         "points": -1
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "ColdBreezeJewel",
@@ -2207,7 +2364,8 @@
         "name": "Heat Res",
         "points": 2
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "WarmBreeze Jewel",
@@ -2222,7 +2380,8 @@
         "name": "Heat Res",
         "points": -1
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "Hot Wind Jewel",
@@ -2237,7 +2396,8 @@
         "name": "Heat Res",
         "points": -1
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "HotBreezeJewel",
@@ -2248,7 +2408,8 @@
         "name": "Cold Res",
         "points": 2
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "Map Jewel",
@@ -2259,7 +2420,8 @@
         "name": "Map",
         "points": 2
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "Gathering Jewel",
@@ -2270,7 +2432,8 @@
         "name": "Gathering",
         "points": 2
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Grab'n'DashJewel",
@@ -2281,7 +2444,8 @@
         "name": "HiSpdGathr",
         "points": 2
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Good Luck Jewel",
@@ -2292,7 +2456,8 @@
         "name": "Whim",
         "points": 1
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "Blessing Jewel",
@@ -2303,7 +2468,8 @@
         "name": "Whim",
         "points": 2
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "HideCutter Jewel",
@@ -2318,7 +2484,8 @@
         "name": "Fate",
         "points": -1
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "HideCutter Jewel",
@@ -2333,7 +2500,8 @@
         "name": "Fate",
         "points": -1
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "Carving Jewel",
@@ -2348,7 +2516,8 @@
         "name": "Fate",
         "points": -2
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "Tranq Jewel",
@@ -2363,7 +2532,8 @@
         "name": "Fate",
         "points": -1
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Knockout Jewel",
@@ -2378,7 +2548,8 @@
         "name": "Fate",
         "points": -1
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Fate Jewel",
@@ -2393,7 +2564,8 @@
         "name": "Whim",
         "points": -1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Destiny Jewel",
@@ -2408,7 +2580,8 @@
         "name": "Whim",
         "points": -1
       }
-    ]
+    ],
+    "color": "red"
   },
   {
     "name": "Fisher Jewel",
@@ -2419,7 +2592,8 @@
         "name": "Fishing",
         "points": 2
       }
-    ]
+    ],
+    "color": "sky"
   },
   {
     "name": "Psychic Jewel",
@@ -2430,7 +2604,8 @@
         "name": "PsychicVis",
         "points": 2
       }
-    ]
+    ],
+    "color": "orange"
   },
   {
     "name": "Perceive Jewel",
@@ -2441,7 +2616,8 @@
         "name": "Perceive",
         "points": 2
       }
-    ]
+    ],
+    "color": "yellow"
   },
   {
     "name": "Feel Good Jewel",
@@ -2456,7 +2632,8 @@
         "name": "Faint",
         "points": -1
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "SpeedyRecvrJewel",
@@ -2471,7 +2648,8 @@
         "name": "Faint",
         "points": -1
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "SpeedyRecvrJewel",
@@ -2486,7 +2664,8 @@
         "name": "Faint",
         "points": -1
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Curing Jewel",
@@ -2501,7 +2680,8 @@
         "name": "Health",
         "points": -1
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Cure All Jewel",
@@ -2516,7 +2696,8 @@
         "name": "Health",
         "points": -1
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Cure All Jewel+",
@@ -2531,7 +2712,8 @@
         "name": "Health",
         "points": -1
       }
-    ]
+    ],
+    "color": "green"
   },
   {
     "name": "Professor Jewel",
@@ -2542,7 +2724,8 @@
         "name": "MixSucRate",
         "points": 2
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Armory Jewel",
@@ -2553,7 +2736,8 @@
         "name": "Shot Mix",
         "points": 2
       }
-    ]
+    ],
+    "color": "white"
   },
   {
     "name": "SecretArts Jewel",
@@ -2564,7 +2748,8 @@
         "name": "Alchemy",
         "points": 2
       }
-    ]
+    ],
+    "color": "purple"
   },
   {
     "name": "Small Arms Jewel",
@@ -2579,7 +2764,8 @@
         "name": "Stamina",
         "points": -1
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Howitzer Jewel",
@@ -2590,7 +2776,8 @@
         "name": "Gunnery",
         "points": 2
       }
-    ]
+    ],
+    "color": "gray"
   },
   {
     "name": "Fife Jewel",
@@ -2601,7 +2788,8 @@
         "name": "Horn",
         "points": 2
       }
-    ]
+    ],
+    "color": "pink"
   },
   {
     "name": "Cat Guide Jewel",
@@ -2612,7 +2800,8 @@
         "name": "ComrdGuide",
         "points": 2
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Cat Guide Jewel",
@@ -2623,7 +2812,8 @@
         "name": "ComrdGuide",
         "points": 2
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "Cat Attack Jewel",
@@ -2634,7 +2824,8 @@
         "name": "ComradeAtk",
         "points": 2
       }
-    ]
+    ],
+    "color": "blue"
   },
   {
     "name": "CatDefenseJewel",
@@ -2645,6 +2836,7 @@
         "name": "ComradeDef",
         "points": 2
       }
-    ]
+    ],
+    "color": "blue"
   }
 ]

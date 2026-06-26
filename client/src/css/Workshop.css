@@ -432,13 +432,14 @@
   text-align: left;
 }
 
-.equipped-decoration-button img,
-.decoration-picker-button img {
+.decoration-icon {
   width: 22px;
   height: 22px;
+}
 
-  object-fit: contain;
-  image-rendering: pixelated;
+.decoration-icon.rarity-icon-wrapper {
+  width: 22px;
+  height: 22px;
 }
 
 .equipped-decoration-button span,
