@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 import WeaponsAPI from '../services/WeaponsAPI'
 import ArmorsAPI from '../services/ArmorsAPI'
 import SkillsAPI from '../services/SkillsAPI'
+import DecorationsAPI from '../services/DecorationsAPI'
 import RarityIcon from '../components/RarityIcon'
 
+import decorationIcon from '../assets/icons/jewel.png'
 import weaponIcon from '../assets/icons/great-sword.png'
 import helmetIcon from '../assets/icons/helmet.png'
 import plateIcon from '../assets/icons/plate.png'
@@ -42,6 +44,16 @@ const Workshop = () => {
   const [weapons, setWeapons] = useState([])
   const [armors, setArmors] = useState([])
   const [skills, setSkills] = useState([])
+  const [decorations, setDecorations] = useState([])
+
+  const [selectedDecorations, setSelectedDecorations] = useState({
+    weapon: [],
+    helmet: [],
+    plate: [],
+    gauntlets: [],
+    waist: [],
+    leggings: []
+  })
 
   useEffect(() => {
     const fetchGear = async () => {
@@ -49,10 +61,12 @@ const Workshop = () => {
         const weaponsData = await WeaponsAPI.getAllWeapons()
         const armorsData = await ArmorsAPI.getAllArmors()
         const skillsData = await SkillsAPI.getAllSkills()
+        const decorationsData = await DecorationsAPI.getAllDecorations()
 
         setWeapons(weaponsData)
         setArmors(armorsData)
         setSkills(skillsData)
+        setDecorations(decorationsData)
       } catch (error) {
         console.error('Error fetching gear:', error)
       }
@@ -274,13 +288,19 @@ const Workshop = () => {
     (selectedGearSlot !== 'weapon' || selectedWeaponType)
 
   const getGearSetCost = () => {
-    return Object.values(selectedGear).reduce((total, gear) => {
+    const gearCost = Object.values(selectedGear).reduce((total, gear) => {
       if (!gear) return total
 
-      const cost = Number(gear.price ?? gear.cost ?? 0)
-
-      return total + cost
+      return total + Number(gear.price ?? gear.cost ?? 0)
     }, 0)
+
+    const decorationCost = Object.values(selectedDecorations)
+      .flat()
+      .reduce((total, decoration) => {
+        return total + Number(decoration.price ?? decoration.cost ?? 0)
+      }, 0)
+
+    return gearCost + decorationCost
   }
 
   const getNumberValue = (object, ...fields) => {
@@ -333,31 +353,41 @@ const Workshop = () => {
     return gear.skill_points || gear['skill-points'] || []
   }
 
+  const getSkillPointsFromDecoration = (decoration) => {
+    if (!decoration) return []
+
+    return decoration.skill_points || decoration['skill-points'] || []
+  }
+
   const hasTorsoInc = (gear) => {
     const skillPoints = getSkillPointsFromGear(gear)
 
     return skillPoints.some(skill => skill.name === 'Torso Inc')
   }
 
+  const getSkillPointsForSlot = (gearSlotId) => {
+    const gear = selectedGear[gearSlotId]
+    const gearSkillPoints = getSkillPointsFromGear(gear)
+
+    const decorationSkillPoints = selectedDecorations[gearSlotId].flatMap(
+      decoration => getSkillPointsFromDecoration(decoration)
+    )
+
+    return [...gearSkillPoints, ...decorationSkillPoints]
+  }
+
   const getSkillPointTotals = () => {
     const totals = {}
-    const plateGear = selectedGear.plate
-    const plateSkillPoints = getSkillPointsFromGear(plateGear)
+
+    const plateSkillPoints = getSkillPointsForSlot('plate')
 
     Object.entries(selectedGear).forEach(([slot, gear]) => {
       if (!gear) return
 
-      const skillPoints = getSkillPointsFromGear(gear)
-
-      if (slot !== 'plate' && hasTorsoInc(gear)) {
-        plateSkillPoints.forEach((skill) => {
-          if (skill.name === 'Torso Inc') return
-
-          totals[skill.name] = (totals[skill.name] || 0) + Number(skill.points)
-        })
-
-        return
-      }
+      const skillPoints =
+        slot !== 'plate' && hasTorsoInc(gear)
+          ? plateSkillPoints
+          : getSkillPointsForSlot(slot)
 
       skillPoints.forEach((skill) => {
         if (skill.name === 'Torso Inc') return
@@ -438,6 +468,46 @@ const Workshop = () => {
     )
   }
 
+  const getDecorationSlotsUsed = (gearSlotId) => {
+    return selectedDecorations[gearSlotId].reduce((total, decoration) => {
+      return total + Number(decoration.slots || 0)
+    }, 0)
+  }
+
+  const getGearSlotCapacity = (gearSlotId) => {
+    const gear = selectedGear[gearSlotId]
+
+    if (!gear) return 0
+
+    return Number(gear.slots || 0)
+  }
+
+  const canAddDecoration = (gearSlotId, decoration) => {
+    const usedSlots = getDecorationSlotsUsed(gearSlotId)
+    const maxSlots = getGearSlotCapacity(gearSlotId)
+    const decorationSlots = Number(decoration.slots || 0)
+
+    return usedSlots + decorationSlots <= maxSlots
+  }
+
+  const handleAddDecoration = (gearSlotId, decoration) => {
+    if (!selectedGear[gearSlotId]) return
+
+    if (!canAddDecoration(gearSlotId, decoration)) return
+
+    setSelectedDecorations(prev => ({
+      ...prev,
+      [gearSlotId]: [...prev[gearSlotId], decoration]
+    }))
+  }
+
+  const handleRemoveDecoration = (gearSlotId, decorationIndex) => {
+    setSelectedDecorations(prev => ({
+      ...prev,
+      [gearSlotId]: prev[gearSlotId].filter((_, index) => index !== decorationIndex)
+    }))
+  }
+
   return (
     <main className="workshop-page">
       <section className="workshop-top-layout">
@@ -449,24 +519,41 @@ const Workshop = () => {
             const selectedItem = getSelectedGearForSlot(gearSlot.id)
 
             return (
-              <button
+              <div
                 key={gearSlot.id}
-                className="gear-slot-button"
-                onClick={() => handleGearSlotClick(gearSlot.id)}
+                className="gear-slot-card"
               >
-                {selectedItem ? (
-                  <RarityIcon
-                    src={getGearIcon(selectedItem, gearSlot.id)}
-                    color={rarityColorsMap[selectedItem.rare] || '#FFFFFF'}
-                    size={52}
-                    className="gear-icon"
-                  />
-                ) : (
-                  <img src={gearSlot.icon} alt="" className="gear-icon" />
-                )}
+                <button
+                  className="gear-slot-button"
+                  onClick={() => handleGearSlotClick(gearSlot.id)}
+                >
+                  {selectedItem ? (
+                    <RarityIcon
+                      src={getGearIcon(selectedItem, gearSlot.id)}
+                      color={rarityColorsMap[selectedItem.rare] || '#FFFFFF'}
+                      size={52}
+                      className="gear-icon"
+                    />
+                  ) : (
+                    <img src={gearSlot.icon} alt="" className="gear-icon" />
+                  )}
 
-                <span>{selectedItem ? selectedItem.name : gearSlot.label}</span>
-              </button>
+                  <span>{selectedItem ? selectedItem.name : gearSlot.label}</span>
+                </button>
+
+                <DecorationSlotPanel
+                  gearSlotId={gearSlot.id}
+                  selectedGear={selectedItem}
+                  decorations={decorations}
+                  selectedDecorations={selectedDecorations[gearSlot.id]}
+                  decorationIcon={decorationIcon}
+                  usedSlots={getDecorationSlotsUsed(gearSlot.id)}
+                  maxSlots={getGearSlotCapacity(gearSlot.id)}
+                  canAddDecoration={canAddDecoration}
+                  onAddDecoration={handleAddDecoration}
+                  onRemoveDecoration={handleRemoveDecoration}
+                />
+              </div>
             )
           })}
         </section>
@@ -757,6 +844,82 @@ const GearPreview = ({
         )}
       </div>
     </>
+  )
+}
+
+const DecorationSlotPanel = ({
+  gearSlotId,
+  selectedGear,
+  decorations,
+  selectedDecorations,
+  decorationIcon,
+  usedSlots,
+  maxSlots,
+  canAddDecoration,
+  onAddDecoration,
+  onRemoveDecoration
+}) => {
+  if (!selectedGear) {
+    return (
+      <div className="decoration-slot-panel decoration-slot-panel-disabled">
+        <p>Select gear first</p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="decoration-slot-panel">
+      <div className="decoration-slot-header">
+        <strong>Decorations</strong>
+        <span>{usedSlots}/{maxSlots}</span>
+      </div>
+
+      <div className="equipped-decorations">
+        {selectedDecorations.length > 0 ? (
+          selectedDecorations.map((decoration, index) => (
+            <button
+              key={`${decoration.name}-${index}`}
+              className="equipped-decoration-button"
+              onClick={() => onRemoveDecoration(gearSlotId, index)}
+              title="Remove decoration"
+            >
+              <img src={decorationIcon} alt="" />
+              <span>{decoration.name}</span>
+              <small>-</small>
+            </button>
+          ))
+        ) : (
+          <p className="decoration-empty">No decorations</p>
+        )}
+      </div>
+
+      <details className="decoration-picker">
+        <summary>Add Decoration</summary>
+
+        <div className="decoration-picker-list">
+          {decorations.map((decoration) => {
+            const canAdd = canAddDecoration(gearSlotId, decoration)
+
+            return (
+              <button
+                key={decoration.id || decoration.name}
+                className="decoration-picker-button"
+                disabled={!canAdd}
+                onClick={() => onAddDecoration(gearSlotId, decoration)}
+              >
+                <img src={decorationIcon} alt="" />
+
+                <span>{decoration.name}</span>
+
+                <small>
+                  {decoration.slots} slot{Number(decoration.slots) === 1 ? '' : 's'}
+                </small>
+              </button>
+            )
+          })}
+        </div>
+      </details>
+    </div>
   )
 }
 

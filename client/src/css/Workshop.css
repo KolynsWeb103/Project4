@@ -353,6 +353,136 @@
 
 
 /* =========================
+   Gear Slot Cards
+   Gear button + decorations
+========================= */
+
+.gear-slot-card {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gear-slot-button {
+  width: 100%;
+}
+
+
+/* =========================
+   Decoration Panels
+========================= */
+
+.decoration-slot-panel {
+  width: 100%;
+  min-height: 120px;
+
+  padding: 0.6rem;
+
+  border: 1px solid var(--muted-border-color);
+  border-radius: 8px;
+
+  background-color: rgba(0, 0, 0, 0.55);
+  color: white;
+
+  font-size: 0.85rem;
+}
+
+.decoration-slot-panel-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #aaa;
+}
+
+.decoration-slot-panel-disabled p {
+  margin: 0;
+}
+
+.decoration-slot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 0.5rem;
+}
+
+.equipped-decorations {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  margin-bottom: 0.5rem;
+}
+
+.equipped-decoration-button,
+.decoration-picker-button {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  gap: 0.4rem;
+  align-items: center;
+
+  padding: 0.35rem 0.45rem;
+
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.equipped-decoration-button img,
+.decoration-picker-button img {
+  width: 22px;
+  height: 22px;
+
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.equipped-decoration-button span,
+.decoration-picker-button span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.decoration-empty {
+  margin: 0;
+
+  color: #aaa;
+  text-align: center;
+}
+
+.decoration-picker {
+  margin-top: 0.4rem;
+}
+
+.decoration-picker summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.decoration-picker-list {
+  max-height: 180px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  margin-top: 0.5rem;
+
+  overflow-y: auto;
+}
+
+.decoration-picker-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+
+/* =========================
    Responsive Layout
 ========================= */
 
