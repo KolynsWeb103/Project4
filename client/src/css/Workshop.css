@@ -484,6 +484,25 @@
 
 
 /* =========================
+   Save Gear Set
+========================= */
+
+.save-gear-set-message {
+  margin: 0;
+
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.save-gear-set-message-success {
+  color: #52F152;
+}
+
+.save-gear-set-message-error {
+  color: #ff0d00;
+}
+
+/* =========================
    Responsive Layout
 ========================= */
 

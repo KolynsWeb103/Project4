@@ -28,7 +28,7 @@ import heavyBowgunIcon from '../assets/icons/heavy-bowgun.png'
 import '../css/Workshop.css'
 
 const Workshop = () => {
-  const [saveMessage, setSaveMessage] = useState('')
+  const [saveMessage, setSaveMessage] = useState(null)
   const [selectedGearSlot, setSelectedGearSlot] = useState(null)
   const [selectedWeaponType, setSelectedWeaponType] = useState(null)
   const [hoveredGear, setHoveredGear] = useState(null)
@@ -552,19 +552,22 @@ const Workshop = () => {
 
   const handleSaveGearSet = () => {
     if (!selectedGear.weapon) {
-      setSaveMessage('Cannot save gear set. Please select a weapon first.')
+      setSaveMessage({
+        type: 'error',
+        text: 'Cannot save gear set. Please select a weapon first.'
+      })
       return
     }
 
     const invalidSlots = getInvalidDecorationSlots()
 
     if (invalidSlots.length > 0) {
-      setSaveMessage(
-        `Cannot save gear set. Decorations exceed slot limits on: ${invalidSlots
+      setSaveMessage({
+        type: 'error',
+        text: `Cannot save gear set. Decorations exceed slot limits on: ${invalidSlots
           .map(slot => getGearSlotLabel(slot))
           .join(', ')}.`
-      )
-
+      })
       return
     }
 
@@ -572,7 +575,10 @@ const Workshop = () => {
 
     console.log('Gear set is valid. Ready to save:', gearSet)
 
-    setSaveMessage('Gear set saved successfully!')
+    setSaveMessage({
+      type: 'success',
+      text: 'Gear set saved successfully!'
+    })
   }
 
   return (
@@ -591,8 +597,8 @@ const Workshop = () => {
           </button>
 
           {saveMessage && (
-            <p className="save-gear-set-message">
-              {saveMessage}
+            <p className={`save-gear-set-message save-gear-set-message-${saveMessage.type}`}>
+              {saveMessage.text}
             </p>
           )}
         </div>
