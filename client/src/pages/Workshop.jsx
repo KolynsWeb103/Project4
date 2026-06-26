@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import WeaponsAPI from '../services/WeaponsAPI'
 import ArmorsAPI from '../services/ArmorsAPI'
+import SkillsAPI from '../services/SkillsAPI'
 import RarityIcon from '../components/RarityIcon'
 
 import weaponIcon from '../assets/icons/great-sword.png'
@@ -40,15 +41,18 @@ const Workshop = () => {
 
   const [weapons, setWeapons] = useState([])
   const [armors, setArmors] = useState([])
+  const [skills, setSkills] = useState([])
 
   useEffect(() => {
     const fetchGear = async () => {
       try {
         const weaponsData = await WeaponsAPI.getAllWeapons()
         const armorsData = await ArmorsAPI.getAllArmors()
+        const skillsData = await SkillsAPI.getAllSkills()
 
         setWeapons(weaponsData)
         setArmors(armorsData)
+        setSkills(skillsData)
       } catch (error) {
         console.error('Error fetching gear:', error)
       }
@@ -290,6 +294,70 @@ const Workshop = () => {
       .sort((a, b) => b.points - a.points)
   }
 
+  const getSkillPointName = (skill) => {
+    return (
+      skill['skill-point'] ||
+      skill.skill_point ||
+      skill.skillPoint ||
+      skill.skillpoint ||
+      skill.skill_point_name ||
+      ''
+    )
+  }
+
+  const normalizeName = (name) => {
+    return String(name || '').trim().toLowerCase()
+  }
+
+  const getActivatedSkills = () => {
+    const skillPointTotals = getSkillPointTotals()
+    const activatedSkills = []
+
+    skillPointTotals.forEach((skillPointTotal) => {
+      const matchingSkills = skills.filter(
+        skill => normalizeName(getSkillPointName(skill)) === normalizeName(skillPointTotal.name)
+      )
+
+      const positiveSkills = matchingSkills
+        .filter(skill => Number(skill.points) > 0)
+        .sort((a, b) => Number(b.points) - Number(a.points))
+
+      const negativeSkills = matchingSkills
+        .filter(skill => Number(skill.points) < 0)
+        .sort((a, b) => Number(a.points) - Number(b.points))
+
+      const activatedPositiveSkill = positiveSkills.find(
+        skill => Number(skillPointTotal.points) >= Number(skill.points)
+      )
+
+      const activatedNegativeSkill = negativeSkills.find(
+        skill => Number(skillPointTotal.points) <= Number(skill.points)
+      )
+
+      if (activatedPositiveSkill) {
+        activatedSkills.push({
+          name: activatedPositiveSkill.name,
+          skillPoint: getSkillPointName(activatedPositiveSkill) || skillPointTotal.name,
+          requiredPoints: Number(activatedPositiveSkill.points),
+          currentPoints: Number(skillPointTotal.points)
+        })
+      }
+
+      if (activatedNegativeSkill) {
+        activatedSkills.push({
+          name: activatedNegativeSkill.name,
+          skillPoint: getSkillPointName(activatedNegativeSkill) || skillPointTotal.name,
+          requiredPoints: Number(activatedNegativeSkill.points),
+          currentPoints: Number(skillPointTotal.points)
+        })
+      }
+    })
+
+    return activatedSkills.sort((a, b) =>
+      String(a.skillPoint || '').localeCompare(String(b.skillPoint || ''))
+    )
+  }
+
   return (
     <main className="workshop-page">
       <section className="workshop-top-layout">
@@ -320,7 +388,10 @@ const Workshop = () => {
           })}
         </section>
 
-        <SkillSummaryPanel skills={getSkillPointTotals()} />
+        <section className="skill-panels-layout">
+          <SkillSummaryPanel skills={getSkillPointTotals()} />
+          <ActivatedSkillsPanel activatedSkills={getActivatedSkills()} />
+        </section>
       </section>
 
       {selectedGearSlot === 'weapon' && (
@@ -417,6 +488,35 @@ const SkillSummaryPanel = ({ skills }) => {
       ) : (
         <p className="skill-summary-empty">
           No skill points yet.
+        </p>
+      )}
+    </aside>
+  )
+}
+
+const ActivatedSkillsPanel = ({ activatedSkills }) => {
+  return (
+    <aside className="activated-skills-panel">
+      <h2>Activated Skills</h2>
+
+      {activatedSkills.length > 0 ? (
+        <div className="activated-skills-list">
+          {activatedSkills.map((skill) => (
+            <div
+              key={`${skill.skillPoint}-${skill.name}`}
+              className="activated-skill-row"
+            >
+              <span>{skill.name}</span>
+
+              <small>
+                {skill.skillPoint}: {skill.currentPoints}
+              </small>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="activated-skills-empty">
+          No active skills yet.
         </p>
       )}
     </aside>
