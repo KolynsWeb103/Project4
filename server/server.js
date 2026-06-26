@@ -8,6 +8,7 @@ import armorsRouter from './routes/armors.js'
 import decorationsRouter from './routes/decorations.js'
 import skillsRouter from './routes/skills.js'
 import weaponsRouter from './routes/weapons.js'
+import gearSetsRouter from './routes/gearSets.js'
 
 dotenv.config()
 
@@ -21,6 +22,7 @@ app.use('/api/armors', armorsRouter)
 app.use('/api/decorations', decorationsRouter)
 app.use('/api/skills', skillsRouter)
 app.use('/api/weapons', weaponsRouter)
+app.use('/api/gearSets', gearSetsRouter)
 
 if (process.env.NODE_ENV === 'development') {
     app.use(favicon(path.resolve('../', 'client', 'public', 'lightning.png')))

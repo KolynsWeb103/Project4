@@ -3,6 +3,7 @@ import WeaponsAPI from '../services/WeaponsAPI'
 import ArmorsAPI from '../services/ArmorsAPI'
 import SkillsAPI from '../services/SkillsAPI'
 import DecorationsAPI from '../services/DecorationsAPI'
+import GearSetsAPI from '../services/GearSetsAPI'
 import RarityIcon from '../components/RarityIcon'
 
 import decorationIcon from '../assets/icons/jewel.png'
@@ -33,6 +34,7 @@ const Workshop = () => {
   const [selectedGearSlot, setSelectedGearSlot] = useState(null)
   const [selectedWeaponType, setSelectedWeaponType] = useState(null)
   const [hoveredGear, setHoveredGear] = useState(null)
+  const [editingGearSetId, setEditingGearSetId] = useState(null)
 
   const [selectedGear, setSelectedGear] = useState({
     weapon: null,
@@ -552,11 +554,11 @@ const Workshop = () => {
     }
   }
 
-  const handleSaveGearSet = () => {
+  const handleSaveGearSet = async () => {
     if (!gearSetName.trim()) {
       setSaveMessage({
         type: 'error',
-        text: 'Cannot save gear set. Please enter a gear set name.'
+        text: 'Cannot save gear set. Please enter a set name.'
       })
       return
     }
@@ -569,26 +571,32 @@ const Workshop = () => {
       return
     }
 
-    const invalidSlots = getInvalidDecorationSlots()
-
-    if (invalidSlots.length > 0) {
-      setSaveMessage({
-        type: 'error',
-        text: `Cannot save gear set. Decorations exceed slot limits on: ${invalidSlots
-          .map(slot => getGearSlotLabel(slot))
-          .join(', ')}.`
-      })
-      return
-    }
-
     const gearSet = getGearSetPayload()
 
-    console.log('Gear set is valid. Ready to save:', gearSet)
+    try {
+      if (editingGearSetId) {
+        await GearSetsAPI.updateGearSet(editingGearSetId, gearSet)
 
-    setSaveMessage({
-      type: 'success',
-      text: 'Gear set saved successfully!'
-    })
+        setSaveMessage({
+          type: 'success',
+          text: 'Gear set updated successfully!'
+        })
+      } else {
+        const savedGearSet = await GearSetsAPI.createGearSet(gearSet)
+
+        setEditingGearSetId(savedGearSet.id)
+
+        setSaveMessage({
+          type: 'success',
+          text: 'Gear set saved successfully!'
+        })
+      }
+    } catch (error) {
+      setSaveMessage({
+        type: 'error',
+        text: error.message
+      })
+    }
   }
 
   return (

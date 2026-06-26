@@ -5,6 +5,31 @@ import weaponsData from '../data/weapons.js'
 import decorationsData from '../data/decorations.js'
 import skillsData from '../data/skills.js'
 
+const createGearSetsTable = async () => {
+  const createTableQuery = `
+    DROP TABLE IF EXISTS gear_sets;
+
+    CREATE TABLE IF NOT EXISTS gear_sets (
+      id SERIAL PRIMARY KEY,
+      name TEXT NOT NULL,
+      gear JSONB NOT NULL,
+      decorations JSONB NOT NULL,
+      total_cost INTEGER DEFAULT 0,
+      stats JSONB DEFAULT '{}',
+      skill_points JSONB DEFAULT '[]',
+      active_skills JSONB DEFAULT '[]',
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `
+
+  try {
+    await pool.query(createTableQuery)
+  } catch (error) {
+    console.error('⚠️ error creating gear_sets table', error)
+  }
+}
+
 const makeArmorId = (armor, index) => {
   return `${armor.part}_${armor.name}_${armor["hunter-type"]}_${armor.sex}_${index}`
     .toLowerCase()
@@ -272,6 +297,9 @@ const resetDatabase = async () => {
     // await createSkillsTable()
     // await seedSkillsTable()
     console.log('✅ skills table created and seeded')
+
+    // await createGearSetsTable()
+    console.log('✅ gear set table created')
 
   } catch (error) {
     console.error('⚠️ error resetting armors table', error)
