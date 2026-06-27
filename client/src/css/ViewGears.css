@@ -1,0 +1,253 @@
+/* =========================
+   Page Layout
+========================= */
+
+.view-gears-page {
+  width: 100%;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.view-gears-page h1 {
+  margin-bottom: 1rem;
+}
+
+.view-gears-message {
+  margin: 0 0 1rem;
+
+  color: #52F152;
+  text-align: center;
+}
+
+.view-gears-empty {
+  color: #aaa;
+  text-align: center;
+}
+
+
+/* =========================
+   Gear Set List
+========================= */
+
+.gear-set-list {
+  width: 100%;
+  max-width: 1100px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+
+/* =========================
+   Gear Set Card
+========================= */
+
+.gear-set-card {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 1.5rem;
+
+  border: 1px solid var(--muted-border-color);
+  border-radius: 12px;
+
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.gear-set-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+}
+
+.gear-set-card-header h2 {
+  margin: 0;
+}
+
+.gear-set-card-header p {
+  margin: 0.25rem 0 0;
+
+  color: #ccc;
+}
+
+.delete-gear-set-button {
+  width: auto;
+  padding: 0.5rem 0.9rem;
+
+  background-color: #7a2222;
+  border-color: #ff6960;
+}
+
+
+/* =========================
+   Gear Loadout Icons
+========================= */
+
+.gear-set-loadout {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.75rem;
+
+  border-radius: 10px;
+
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.gear-set-loadout-slot {
+  min-height: 130px;
+  box-sizing: border-box;
+
+  padding: 1rem;
+
+  border: 1px solid #444;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.5rem;
+
+  text-align: center;
+}
+
+.gear-set-loadout-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.saved-gear-icon,
+.saved-gear-icon.rarity-icon-wrapper {
+  width: 46px;
+  height: 46px;
+
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.gear-set-loadout-label {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.gear-set-loadout-name {
+  max-width: 100%;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font-size: 0.85rem;
+}
+
+
+/* =========================
+   Gear Details Grid
+========================= */
+
+.gear-set-grid {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+
+  border-radius: 10px;
+
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.gear-set-section {
+  box-sizing: border-box;
+
+  padding: 1.25rem;
+
+  border: 1px solid #444;
+  border-radius: 8px;
+}
+
+.gear-set-section h3 {
+  margin: 0 0 0.75rem;
+
+  font-size: 1rem;
+  text-align: center;
+}
+
+.gear-set-section p {
+  margin: 0.5rem 0;
+}
+
+.gear-set-section ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.gear-set-section li {
+  margin-bottom: 0.5rem;
+}
+
+
+/* =========================
+   Responsive Layout
+========================= */
+
+@media (max-width: 950px) {
+  .gear-set-loadout {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gear-set-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 550px) {
+  .view-gears-page {
+    padding: 1rem;
+  }
+
+  .gear-set-card {
+    padding: 1rem;
+  }
+
+  .gear-set-card-header {
+    flex-direction: column;
+  }
+
+  .delete-gear-set-button {
+    width: 100%;
+  }
+
+  .gear-set-loadout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0.75rem;
+  }
+
+  .gear-set-grid {
+    grid-template-columns: 1fr;
+    padding: 0.75rem;
+  }
+}

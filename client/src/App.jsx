@@ -2,6 +2,7 @@ import React from 'react'
 import { useRoutes } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import Workshop from './pages/Workshop'
+import ViewGears from './pages/ViewGears'
 
 import './App.css'
 
@@ -10,6 +11,10 @@ const App = () => {
     {
       path: '/',
       element: <Workshop/>
+    },
+    {
+      path: '/customgears',
+      element: <ViewGears />
     }
   ])
 
