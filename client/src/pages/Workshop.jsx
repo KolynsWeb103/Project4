@@ -1079,6 +1079,8 @@ const DecorationSlotPanel = ({
   onAddDecoration,
   onRemoveDecoration
 }) => {
+  const [decorationSearchText, setDecorationSearchText] = useState('')
+
   if (!selectedGear) {
     return (
       <div className="decoration-slot-panel decoration-slot-panel-disabled">
@@ -1086,6 +1088,14 @@ const DecorationSlotPanel = ({
       </div>
     )
   }
+
+  const filteredDecorations = decorations.filter((decoration) => {
+    const searchText = decorationSearchText.trim().toLowerCase()
+
+    if (!searchText) return true
+
+    return decoration.name.toLowerCase().includes(searchText)
+  })
 
   return (
     <div className="decoration-slot-panel">
@@ -1121,32 +1131,46 @@ const DecorationSlotPanel = ({
       <details className="decoration-picker">
         <summary>Add Decoration</summary>
 
+        <input
+          className="decoration-search-input"
+          type="text"
+          value={decorationSearchText}
+          onChange={(event) => setDecorationSearchText(event.target.value)}
+          placeholder="Search decorations..."
+        />
+
         <div className="decoration-picker-list">
-          {decorations.map((decoration) => {
-            const canAdd = canAddDecoration(gearSlotId, decoration)
+          {filteredDecorations.length > 0 ? (
+            filteredDecorations.map((decoration) => {
+              const canAdd = canAddDecoration(gearSlotId, decoration)
 
-            return (
-              <button
-                key={decoration.id || decoration.name}
-                className="decoration-picker-button"
-                disabled={!canAdd}
-                onClick={() => onAddDecoration(gearSlotId, decoration)}
-              >
-                <RarityIcon
-                  src={decorationIcon}
-                  color={decorationColorsMap[decoration.color] || '#FFFFFF'}
-                  size={22}
-                  className="decoration-icon"
-                />
+              return (
+                <button
+                  key={decoration.id || decoration.name}
+                  className="decoration-picker-button"
+                  disabled={!canAdd}
+                  onClick={() => onAddDecoration(gearSlotId, decoration)}
+                >
+                  <RarityIcon
+                    src={decorationIcon}
+                    color={decorationColorsMap[decoration.color] || '#FFFFFF'}
+                    size={22}
+                    className="decoration-icon"
+                  />
 
-                <span>{decoration.name}</span>
+                  <span>{decoration.name}</span>
 
-                <small>
-                  {decoration.slots} slot{Number(decoration.slots) === 1 ? '' : 's'}
-                </small>
-              </button>
-            )
-          })}
+                  <small>
+                    {decoration.slots} slot{Number(decoration.slots) === 1 ? '' : 's'}
+                  </small>
+                </button>
+              )
+            })
+          ) : (
+            <p className="decoration-search-empty">
+              No matching decorations.
+            </p>
+          )}
         </div>
       </details>
     </div>
