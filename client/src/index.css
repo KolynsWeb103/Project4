@@ -20,7 +20,7 @@ body {
     font-family: Nunito Sans, Verdana, sans-serif;
     min-height: 100vh;
 
-    --main-color: rgba(0, 0, 0, 0.75);
+    --main-color: rgba(49, 96, 31, 0.75);
     --secondary-color: rgb(0, 40, 95);
     --primary: var(--main-color);
     --primary-hover: rgb(0, 40, 95);
