@@ -315,17 +315,33 @@ const Workshop = () => {
     selectedGearSlot &&
     (selectedGearSlot !== 'weapon' || selectedWeaponType)
 
+  const getCostValue = (item) => {
+    if (!item) return 0
+
+    return Number(
+      item.price ??
+      item.cost ??
+      item.total_cost ??
+      item.totalCost ??
+      item.creation_cost ??
+      item.creationCost ??
+      item.craft_cost ??
+      item.craftCost ??
+      item.buy_price ??
+      item.buyPrice ??
+      0
+    ) || 0
+  }
+
   const getGearSetCost = () => {
     const gearCost = Object.values(selectedGear).reduce((total, gear) => {
-      if (!gear) return total
-
-      return total + Number(gear.price ?? gear.cost ?? 0)
+      return total + getCostValue(gear)
     }, 0)
 
     const decorationCost = Object.values(selectedDecorations)
       .flat()
       .reduce((total, decoration) => {
-        return total + Number(decoration.price ?? decoration.cost ?? 0)
+        return total + getCostValue(decoration)
       }, 0)
 
     return gearCost + decorationCost
@@ -367,7 +383,7 @@ const Workshop = () => {
 
       stats.fireRes += getNumberValue(gear, 'fire_res', 'fireRes', 'fire')
       stats.waterRes += getNumberValue(gear, 'water_res', 'waterRes', 'water')
-      stats.thunderRes += getNumberValue(gear, 'thunder_res', 'thunderRes', 'thunder')
+      stats.thunderRes += getNumberValue(gear, 'thunder_res', 'thundr_res', 'thunderRes', 'thunder')
       stats.iceRes += getNumberValue(gear, 'ice_res', 'iceRes', 'ice')
       stats.dragonRes += getNumberValue(gear, 'dragon_res', 'dragonRes', 'dragon')
     })
@@ -554,14 +570,21 @@ const Workshop = () => {
   }
 
   const getGearSetPayload = () => {
+    const totalCost = getGearSetCost()
+
     return {
       name: gearSetName.trim(),
       gear: selectedGear,
       decorations: selectedDecorations,
-      totalCost: getGearSetCost(),
+
+      totalCost: totalCost,
+      total_cost: totalCost,
+
       stats: getGearStats(),
       skillPoints: getSkillPointTotals(),
-      activeSkills: getActivatedSkills()
+      skill_points: getSkillPointTotals(),
+      activeSkills: getActivatedSkills(),
+      active_skills: getActivatedSkills()
     }
   }
 
@@ -773,6 +796,7 @@ const Workshop = () => {
                 formatSlots={formatSlots}
                 getGearIcon={getGearIcon}
                 rarityColorsMap={rarityColorsMap}
+                getCostValue={getCostValue}
               />
             </aside>
           </div>
@@ -895,7 +919,8 @@ const GearPreview = ({
   gearSlot,
   formatSlots,
   getGearIcon,
-  rarityColorsMap
+  rarityColorsMap,
+  getCostValue
 }) => {
   if (!gear) {
     return (
@@ -951,7 +976,7 @@ const GearPreview = ({
             <p><strong>Dragon Res:</strong> {getValue('dragon_res', 'dragonRes', 'dragon')}</p>
           </>
         )}
-
+        <p><strong>Cost:</strong> {getCostValue(gear)}z</p>
         <p><strong>Slots:</strong> {formatSlots(gear.slots)}</p>
         <p><strong>Description:</strong> {gear.description ?? ''}</p>
 
