@@ -24,7 +24,7 @@ body {
     --secondary-color: rgb(0, 40, 95);
     --primary: var(--main-color);
     --primary-hover: rgb(0, 40, 95);
-    --primary-focus: rgb(0, 0, 0, 0.75);
+    --primary-focus: rgba(49, 96, 31, 0.75);
     --secondary: var(--secondary-color);
     --secondary-hover: rgb(4, 66, 191);
     --secondary-focus: rgb(0, 0, 0);
