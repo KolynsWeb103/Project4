@@ -31,7 +31,7 @@ const Navigation = () => {
 
         <ul>
         <li><a href='/' role='button'>Workshop</a></li>
-        <li><a href='/customgears' role='button'>View Gears</a></li>
+        <li><a href='/gears' role='button'>View Gears</a></li>
         </ul>
     </nav>
     )

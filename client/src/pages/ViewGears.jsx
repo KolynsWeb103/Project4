@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import GearSetsAPI from '../services/GearSetsAPI'
 import RarityIcon from '../components/RarityIcon'
 
@@ -192,12 +193,21 @@ const ViewGears = () => {
                     <p>Cost (excluding weapon): {gearSet.total_cost ?? gearSet.totalCost ?? 0}z</p>
                   </div>
 
-                  <button
-                    className="delete-gear-set-button"
-                    onClick={() => handleDeleteGearSet(gearSet.id)}
-                  >
-                    Delete
-                  </button>
+                  <div className="gear-set-card-actions">
+                    <Link
+                      to={`/gears/${gearSet.id}`}
+                      className="gear-set-card-button view-gear-set-button"
+                    >
+                      View / Edit
+                    </Link>
+
+                    <button
+                      className="gear-set-card-button delete-gear-set-button"
+                      onClick={() => handleDeleteGearSet(gearSet.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
 
                 <div className="gear-set-loadout">

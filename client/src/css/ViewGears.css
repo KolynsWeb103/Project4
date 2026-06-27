@@ -89,12 +89,57 @@
   color: #ccc;
 }
 
-.delete-gear-set-button {
+.gear-set-card-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.gear-set-card-button {
   width: auto;
+  min-width: 110px;
+
+  margin: 0;
   padding: 0.5rem 0.9rem;
 
-  background-color: #7a2222;
+  border: 1px solid var(--primary);
+  border-radius: var(--border-radius);
+
+  background-color: var(--primary);
+  color: var(--primary-inverse);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font: inherit;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.gear-set-card-button:hover {
+  filter: brightness(1.08);
+  text-decoration: none;
+}
+
+.delete-gear-set-button {
   border-color: #ff6960;
+  background-color: #7a2222;
+  color: white;
+}
+
+@media (max-width: 550px) {
+  .gear-set-card-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .gear-set-action-button {
+    width: 100%;
+  }
 }
 
 
