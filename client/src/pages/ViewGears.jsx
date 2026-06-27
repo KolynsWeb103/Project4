@@ -195,7 +195,7 @@ const ViewGears = () => {
 
                   <div className="gear-set-card-actions">
                     <Link
-                      to={`/gears/${gearSet.id}`}
+                      to={`/workshop/edit/${gearSet.id}`}
                       className="gear-set-card-button view-gear-set-button"
                     >
                       View / Edit

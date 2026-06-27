@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import WeaponsAPI from '../services/WeaponsAPI'
 import ArmorsAPI from '../services/ArmorsAPI'
 import SkillsAPI from '../services/SkillsAPI'
@@ -29,6 +30,8 @@ import heavyBowgunIcon from '../assets/icons/heavy-bowgun.png'
 import '../css/Workshop.css'
 
 const Workshop = () => {
+  const { gearSetId } = useParams()
+
   const [saveMessage, setSaveMessage] = useState(null)
   const [gearSetName, setGearSetName] = useState('')
   const [selectedGearSlot, setSelectedGearSlot] = useState(null)
@@ -79,6 +82,51 @@ const Workshop = () => {
 
     fetchGear()
   }, [])
+
+  useEffect(() => {
+    const fetchGearSetForEditing = async () => {
+      if (!gearSetId) return
+
+      try {
+        const gearSet = await GearSetsAPI.getGearSetById(gearSetId)
+
+        setEditingGearSetId(gearSet.id)
+        setGearSetName(gearSet.name || '')
+
+        setSelectedGear({
+          weapon: gearSet.gear?.weapon || null,
+          helmet: gearSet.gear?.helmet || null,
+          plate: gearSet.gear?.plate || null,
+          gauntlets: gearSet.gear?.gauntlets || null,
+          waist: gearSet.gear?.waist || null,
+          leggings: gearSet.gear?.leggings || null
+        })
+
+        setSelectedDecorations({
+          weapon: gearSet.decorations?.weapon || [],
+          helmet: gearSet.decorations?.helmet || [],
+          plate: gearSet.decorations?.plate || [],
+          gauntlets: gearSet.decorations?.gauntlets || [],
+          waist: gearSet.decorations?.waist || [],
+          leggings: gearSet.decorations?.leggings || []
+        })
+
+        setSaveMessage({
+          type: 'success',
+          text: 'Editing saved gear set.'
+        })
+      } catch (error) {
+        console.error('Error loading gear set for editing:', error)
+
+        setSaveMessage({
+          type: 'error',
+          text: 'Failed to load gear set for editing.'
+        })
+      }
+    }
+
+    fetchGearSetForEditing()
+  }, [gearSetId])
 
   const gearSlots = [
     {
@@ -657,7 +705,7 @@ const Workshop = () => {
             className="save-gear-set-button"
             onClick={handleSaveGearSet}
           >
-            Save Gear Set
+            {editingGearSetId ? 'Update Gear Set' : 'Save Gear Set'}
           </button>
 
           {saveMessage && (
@@ -971,7 +1019,7 @@ const GearPreview = ({
             <p><strong>Defense:</strong> {gear.defense ?? 0}</p>
             <p><strong>Fire Res:</strong> {getValue('fire_res', 'fireRes', 'fire')}</p>
             <p><strong>Water Res:</strong> {getValue('water_res', 'waterRes', 'water')}</p>
-            <p><strong>Thunder Res:</strong> {getValue('thunder_res', 'thunderRes', 'thunder')}</p>
+            <p><strong>Thunder Res:</strong> {getValue('thunder_res', 'thundr_res', 'thunderRes', 'thunder')}</p>
             <p><strong>Ice Res:</strong> {getValue('ice_res', 'iceRes', 'ice')}</p>
             <p><strong>Dragon Res:</strong> {getValue('dragon_res', 'dragonRes', 'dragon')}</p>
           </>

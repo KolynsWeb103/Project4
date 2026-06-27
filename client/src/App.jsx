@@ -20,6 +20,10 @@ const App = () => {
     {
       path: '/gears/:gearSetId',
       element: <GearSetDetail />
+    },
+    {
+      path: '/workshop/edit/:gearSetId',
+      element: <Workshop />
     }
   ])
 
