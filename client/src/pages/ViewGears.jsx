@@ -189,7 +189,7 @@ const ViewGears = () => {
                 <div className="gear-set-card-header">
                   <div>
                     <h2>{gearSet.name}</h2>
-                    <p>Cost: {gearSet.total_cost ?? gearSet.totalCost ?? 0}z</p>
+                    <p>Cost (excluding weapon): {gearSet.total_cost ?? gearSet.totalCost ?? 0}z</p>
                   </div>
 
                   <button

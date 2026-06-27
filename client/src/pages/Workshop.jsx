@@ -649,7 +649,7 @@ const Workshop = () => {
         </div>
 
         <div className="gear-set-cost-label">
-          💰 Gear Set Cost: {getGearSetCost()}z
+          💰 Gear Set Cost (excluding Weapon): {getGearSetCost()}z
         </div>
 
         <div className="gear-set-actions">
